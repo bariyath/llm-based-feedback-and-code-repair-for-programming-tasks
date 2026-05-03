@@ -1,0 +1,1663 @@
+case_id,question_id,student_id,language,candidate_id,patch_status,patch_applied,student_code,patched_code,replace_block,with_block
+60,20_21-1-2-java,AZCUDUY3,java,1,exact_replace_success,True,"int [] solution(int arr[]) {
+    
+    ordnen(arr, 0, arr.length-1);
+    return arr;
+}
+    
+int partition(int arr[], int links, int rechts) {
+	int pivot = arr[rechts];
+	int i = (links - 1);
+	for (int j = links; j < rechts; j++) {
+		if (arr[j] < pivot) {
+			i++;
+
+			int temp = arr[i];
+			arr[i] = arr[j];
+			arr[j] = temp;
+		}
+	}
+
+	int temp = arr[i + 1];
+	arr[i + 1] = arr[rechts];
+	arr[rechts] = temp;
+
+	return i + 1;
+}
+	
+void ordnen(int arr[], int links, int rechts) {
+	if (links < rechts) {
+
+		int pi = partition(arr, links, rechts);
+
+		ordnen(arr, links, pi - 1);
+		ordnen(arr, pi + 1, rechts);
+	}
+}","int [] solution(int arr[]) {
+
+    ordnen(arr, 0, arr.length-1);
+    return arr;
+}
+
+int partition(int arr[], int links, int rechts) {
+	int pivot = arr[rechts];
+	int i = (links - 1);
+	for (int j = links; j < rechts; j++) {
+		if (arr[j] < pivot) {
+			i++;
+
+			int temp = arr[i];
+			arr[i] = arr[j];
+			arr[j] = temp;
+		}
+	}
+
+	int temp = arr[i + 1];
+	arr[i + 1] = arr[rechts];
+	arr[rechts] = temp;
+
+	return i + 1;
+}
+
+void ordnen(int arr[], int links, int rechts) {
+    if (links < rechts) {
+        // Randomize pivot selection
+        java.util.Random rand = new java.util.Random();
+        int pivotIndex = links + rand.nextInt(rechts - links + 1);
+        int temp = arr[pivotIndex];
+        arr[pivotIndex] = arr[rechts];
+        arr[rechts] = temp;
+
+        int pi = partition(arr, links, rechts);
+
+        ordnen(arr, links, pi - 1);
+        ordnen(arr, pi + 1, rechts);
+    }
+}","void ordnen(int arr[], int links, int rechts) {
+	if (links < rechts) {
+
+		int pi = partition(arr, links, rechts);
+
+		ordnen(arr, links, pi - 1);
+		ordnen(arr, pi + 1, rechts);
+	}
+}","void ordnen(int arr[], int links, int rechts) {
+    if (links < rechts) {
+        // Randomize pivot selection
+        java.util.Random rand = new java.util.Random();
+        int pivotIndex = links + rand.nextInt(rechts - links + 1);
+        int temp = arr[pivotIndex];
+        arr[pivotIndex] = arr[rechts];
+        arr[rechts] = temp;
+
+        int pi = partition(arr, links, rechts);
+
+        ordnen(arr, links, pi - 1);
+        ordnen(arr, pi + 1, rechts);
+    }
+}"
+84,20_21-1-2-java,PS3U2NU6,java,1,exact_replace_success,True,"int randPartition(int[] A, int l, int r) {
+    int i = r-1;
+    int temp = A[i];
+    A[i] = A[r];
+    A[r] = temp;
+    return(partition(A,l,r));
+}
+
+int partition(int[] A,int l,int r) {
+    int x = A[r];
+    int i = l-1;
+    for(int j = l;j<r;j++) {
+        if(A[j]<=x) {
+            i++;
+            int t = A[i];
+            A[i] = A[j];
+            A[j] = t;
+        }
+    }
+    int temp = A[i+1];
+    A[i+1] = A[r];
+    A[r] = temp;
+    return i+1;
+}
+
+int[] quick(int[] A, int l, int r) {
+    if(l<r) {
+        int p = randPartition(A,l,r);
+        A = quick(A,l,p-1);
+        A = quick(A,p+1,r);
+    }
+    return A;
+}
+
+
+int [] solution(int arr[]) {
+    return quick(arr,0,arr.length-1);
+}","int randPartition(int[] A, int l, int r) {
+    java.util.Random rand = new java.util.Random();
+    int pivotIndex = l + rand.nextInt(r - l + 1);
+    int temp = A[pivotIndex];
+    A[pivotIndex] = A[r];
+    A[r] = temp;
+    return partition(A, l, r);
+}
+
+int partition(int[] A,int l,int r) {
+    int x = A[r];
+    int i = l-1;
+    for(int j = l;j<r;j++) {
+        if(A[j]<=x) {
+            i++;
+            int t = A[i];
+            A[i] = A[j];
+            A[j] = t;
+        }
+    }
+    int temp = A[i+1];
+    A[i+1] = A[r];
+    A[r] = temp;
+    return i+1;
+}
+
+int[] quick(int[] A, int l, int r) {
+    if(l<r) {
+        int p = randPartition(A,l,r);
+        A = quick(A,l,p-1);
+        A = quick(A,p+1,r);
+    }
+    return A;
+}
+
+
+int [] solution(int arr[]) {
+    return quick(arr,0,arr.length-1);
+}","int randPartition(int[] A, int l, int r) {
+    int i = r-1;
+    int temp = A[i];
+    A[i] = A[r];
+    A[r] = temp;
+    return(partition(A,l,r));
+}","int randPartition(int[] A, int l, int r) {
+    java.util.Random rand = new java.util.Random();
+    int pivotIndex = l + rand.nextInt(r - l + 1);
+    int temp = A[pivotIndex];
+    A[pivotIndex] = A[r];
+    A[r] = temp;
+    return partition(A, l, r);
+}"
+88,20_21-1-2-java,RZECKLKA,java,1,exact_replace_success,True,"int [] solution(int arr[]) {
+    quicksort(arr,0,arr.length-1);
+    return arr;
+}
+
+int partition(int intArray[], int low, int high) { 
+        int pi = intArray[high]; 
+        int i = (low-1);
+        for (int j=low; j<high; j++) { 
+            if (intArray[j] <= pi) { 
+                i++; 
+                int temp = intArray[i]; 
+                intArray[i] = intArray[j]; 
+                intArray[j] = temp; 
+            } 
+        } 
+        int temp = intArray[i+1]; 
+        intArray[i+1] = intArray[high]; 
+        intArray[high] = temp; 
+   
+        return i+1; 
+}
+
+void quicksort(int intArray[], int low, int high) { 
+        if (low < high) { 
+            int pi = partition(intArray, low, high); 
+
+            quicksort(intArray, low, pi-1); 
+            quicksort(intArray, pi+1, high); 
+        } 
+    }","int [] solution(int arr[]) {
+    quicksort(arr,0,arr.length-1);
+    return arr;
+}
+
+int partition(int intArray[], int low, int high) {
+        java.util.Random rand = new java.util.Random();
+        int pivotIndex = low + rand.nextInt(high - low + 1);
+        int tempPivot = intArray[pivotIndex];
+        intArray[pivotIndex] = intArray[high];
+        intArray[high] = tempPivot;
+        int pi = intArray[high];
+        int i = (low-1);
+        for (int j=low; j<high; j++) {
+            if (intArray[j] <= pi) {
+                i++;
+                int temp = intArray[i];
+                intArray[i] = intArray[j];
+                intArray[j] = temp;
+            }
+        }
+        int temp = intArray[i+1];
+        intArray[i+1] = intArray[high];
+        intArray[high] = temp;
+
+        return i+1;
+}
+
+void quicksort(int intArray[], int low, int high) {
+        if (low < high) {
+            int pi = partition(intArray, low, high);
+
+            quicksort(intArray, low, pi-1);
+            quicksort(intArray, pi+1, high);
+        }
+    }","int partition(int intArray[], int low, int high) { 
+        int pi = intArray[high]; 
+        int i = (low-1);
+        for (int j=low; j<high; j++) { 
+            if (intArray[j] <= pi) { 
+                i++; 
+                int temp = intArray[i]; 
+                intArray[i] = intArray[j]; 
+                intArray[j] = temp; 
+            } 
+        } 
+        int temp = intArray[i+1]; 
+        intArray[i+1] = intArray[high]; 
+        intArray[high] = temp; 
+   
+        return i+1; 
+}","int partition(int intArray[], int low, int high) { 
+        java.util.Random rand = new java.util.Random();
+        int pivotIndex = low + rand.nextInt(high - low + 1);
+        int tempPivot = intArray[pivotIndex];
+        intArray[pivotIndex] = intArray[high];
+        intArray[high] = tempPivot;
+        int pi = intArray[high]; 
+        int i = (low-1);
+        for (int j=low; j<high; j++) { 
+            if (intArray[j] <= pi) { 
+                i++; 
+                int temp = intArray[i]; 
+                intArray[i] = intArray[j]; 
+                intArray[j] = temp; 
+            } 
+        } 
+        int temp = intArray[i+1]; 
+        intArray[i+1] = intArray[high]; 
+        intArray[high] = temp; 
+   
+        return i+1; 
+}"
+124,20_21-1-1-python,PN7ZRXGS,python,1,exact_replace_success,True,"def expo(a, b, c):
+    res = 1
+    b = b % c
+    while(b>0):
+        if(b % 2 == 1):
+            res = (res*a) % c
+        b = b//2
+        a = (a*a) % c
+    return res
+
+'''
+def addiere(a,b,c,d,e):
+
+    res = (a+b) % 1000000007
+
+    res = (res+c) % 1000000007
+
+    res = (res+d) % 1000000007
+
+    res = (res+e) % 1000000007
+
+    return (res+1000) % 1000000007
+'''","def expo(a, b, c):
+    res = 1
+    while(b>0):
+        if(b % 2 == 1):
+            res = (res*a) % c
+        b = b//2
+        a = (a*a) % c
+    return res
+
+'''
+def addiere(a,b,c,d,e):
+
+    res = (a+b) % 1000000007
+
+    res = (res+c) % 1000000007
+
+    res = (res+d) % 1000000007
+
+    res = (res+e) % 1000000007
+
+    return (res+1000) % 1000000007
+'''","def expo(a, b, c):
+    res = 1
+    b = b % c
+    while(b>0):
+        if(b % 2 == 1):
+            res = (res*a) % c
+        b = b//2
+        a = (a*a) % c
+    return res
+","def expo(a, b, c):
+    res = 1
+    while(b>0):
+        if(b % 2 == 1):
+            res = (res*a) % c
+        b = b//2
+        a = (a*a) % c
+    return res
+"
+272,20_21-3-1-java,2V5AQFDC,java,1,exact_replace_success,True,"public double knapSack(double[] values, int[] volumes, int capacity) {
+    int n = values.length;
+    double[][] table = new double[n + 1][capacity + 1];
+    for (int j = 0; j <= capacity; j++) {
+        table[0][j] = 0;
+    }
+
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= capacity; j++) { 
+            if (volumes[i - 1] > j) {
+                table[i][j] = table[i - 1][j];
+            } else {
+                table[i][j] = Math.max(
+                  table[i - 1][j], 
+                  table[i - 1][j - volumes[i - 1]] + values[i - 1]);
+            }
+        }
+    }
+    return table[n][capacity];
+}","public double knapSack(double[] values, int[] volumes, int capacity) {
+    int n = values.length;
+    double[][] table = new double[n + 1][capacity + 1];
+    for (int j = 0; j <= capacity; j++) {
+        table[0][j] = 0;
+    }
+
+    for (int i = 1; i <= n; i++) {
+        for (int j = 0; j <= capacity; j++) { // FIX: start from j=0
+            if (volumes[i - 1] > j) {
+                table[i][j] = table[i - 1][j];
+            } else {
+                table[i][j] = Math.max(
+                  table[i - 1][j],
+                  table[i - 1][j - volumes[i - 1]] + values[i - 1]);
+            }
+        }
+    }
+    return table[n][capacity];
+}","public double knapSack(double[] values, int[] volumes, int capacity) {
+    int n = values.length;
+    double[][] table = new double[n + 1][capacity + 1];
+    for (int j = 0; j <= capacity; j++) {
+        table[0][j] = 0;
+    }
+
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= capacity; j++) { 
+            if (volumes[i - 1] > j) {
+                table[i][j] = table[i - 1][j];
+            } else {
+                table[i][j] = Math.max(
+                  table[i - 1][j], 
+                  table[i - 1][j - volumes[i - 1]] + values[i - 1]);
+            }
+        }
+    }
+    return table[n][capacity];
+}","public double knapSack(double[] values, int[] volumes, int capacity) {
+    int n = values.length;
+    double[][] table = new double[n + 1][capacity + 1];
+    for (int j = 0; j <= capacity; j++) {
+        table[0][j] = 0;
+    }
+
+    for (int i = 1; i <= n; i++) {
+        for (int j = 0; j <= capacity; j++) { // FIX: start from j=0
+            if (volumes[i - 1] > j) {
+                table[i][j] = table[i - 1][j];
+            } else {
+                table[i][j] = Math.max(
+                  table[i - 1][j], 
+                  table[i - 1][j - volumes[i - 1]] + values[i - 1]);
+            }
+        }
+    }
+    return table[n][capacity];
+}"
+274,20_21-3-1-java,3MFTY3YK,java,1,exact_replace_success,True,"public double knapSack(double[] values, int[] volumes, int capacity) {
+    assert values.length == volumes.length;
+    double[][] table = new double[volumes.length + 1][capacity + 1];
+
+	if (capacity == 0) {
+	    return 0.0;
+	}
+
+	for (int k = 1; k < volumes.length + 1; k++) {
+	    for (int l = 1; l <= capacity; l++) {
+		if (volumes[k - 1] > l) {
+		    table[k][l] = table[k - 1][l];
+		} else if (table[k - 1][l - volumes[k - 1]] + values[k - 1] > table[k - 1][l]) {
+		    table[k][l] = table[k - 1][l - volumes[k - 1]] + values[k - 1];
+		} else {
+		    table[k][l] = table[k - 1][l];
+		}
+
+	    }
+	}
+
+	return table[volumes.length][capacity];
+}","public double knapSack(double[] values, int[] volumes, int capacity) {
+    assert values.length == volumes.length;
+    double[][] table = new double[volumes.length + 1][capacity + 1];
+
+    if (capacity == 0) {
+        return 0.0;
+    }
+
+    for (int k = 1; k < volumes.length + 1; k++) {
+        for (int l = 0; l <= capacity; l++) {
+            if (volumes[k - 1] > l) {
+                table[k][l] = table[k - 1][l];
+            } else if (table[k - 1][l - volumes[k - 1]] + values[k - 1] > table[k - 1][l]) {
+                table[k][l] = table[k - 1][l - volumes[k - 1]] + values[k - 1];
+            } else {
+                table[k][l] = table[k - 1][l];
+            }
+        }
+    }
+
+    return table[volumes.length][capacity];
+}","public double knapSack(double[] values, int[] volumes, int capacity) {
+    assert values.length == volumes.length;
+    double[][] table = new double[volumes.length + 1][capacity + 1];
+
+	if (capacity == 0) {
+	    return 0.0;
+	}
+
+	for (int k = 1; k < volumes.length + 1; k++) {
+	    for (int l = 1; l <= capacity; l++) {
+		if (volumes[k - 1] > l) {
+		    table[k][l] = table[k - 1][l];
+		} else if (table[k - 1][l - volumes[k - 1]] + values[k - 1] > table[k - 1][l]) {
+		    table[k][l] = table[k - 1][l - volumes[k - 1]] + values[k - 1];
+		} else {
+		    table[k][l] = table[k - 1][l];
+		}
+
+	    }
+	}
+
+	return table[volumes.length][capacity];
+}","public double knapSack(double[] values, int[] volumes, int capacity) {
+    assert values.length == volumes.length;
+    double[][] table = new double[volumes.length + 1][capacity + 1];
+
+    if (capacity == 0) {
+        return 0.0;
+    }
+
+    for (int k = 1; k < volumes.length + 1; k++) {
+        for (int l = 0; l <= capacity; l++) {
+            if (volumes[k - 1] > l) {
+                table[k][l] = table[k - 1][l];
+            } else if (table[k - 1][l - volumes[k - 1]] + values[k - 1] > table[k - 1][l]) {
+                table[k][l] = table[k - 1][l - volumes[k - 1]] + values[k - 1];
+            } else {
+                table[k][l] = table[k - 1][l];
+            }
+        }
+    }
+
+    return table[volumes.length][capacity];
+}"
+278,20_21-3-1-java,7QRZJY2B,java,2,exact_replace_success,True,"public double knapSack(double[] values, int[] volumes, int capacity) {
+    assert values.length == volumes.length;
+        int objectcount = values.length;
+
+        double[][] A = new double[objectcount + 1][capacity + 1];
+        for (int o = 0; o <= objectcount; o++)
+        {
+            for (int w = 0; w <= capacity; w++)
+            {
+                if (w == 0 || o == 0)
+                {
+                    A[o][w] = 0;
+                }
+                else if (volumes[o - 1] > w)
+                {
+                    A[o][w] = A[o - 1][w];
+                }
+                else
+                {
+                    if (A[o - 1][w] > (values[o - 1]
+                            + A[o - 1][w - volumes[o - 1]]))
+                    {
+                        A[o][w] = A[o - 1][w];
+                    }
+                    else
+                    {
+                        A[o][w] = values[o - 1] + A[o - 1][w - volumes[o - 1]];
+                    }
+
+                }
+            }
+        }
+        return A[objectcount][capacity];
+}","public double knapSack(double[] values, int[] volumes, int capacity) {
+    assert values.length == volumes.length;
+    int objectcount = values.length;
+    double[][] A = new double[objectcount + 1][capacity + 1];
+    for (int o = 0; o <= objectcount; o++) {
+        for (int w = 0; w <= capacity; w++) {
+            if (w == 0 || o == 0) {
+                A[o][w] = 0;
+            } else if (volumes[o - 1] > w) {
+                A[o][w] = A[o - 1][w];
+            } else {
+                // Fix: For zero-volume items, only allow including each item once
+                A[o][w] = Math.max(A[o - 1][w], values[o - 1] + A[o - 1][w - volumes[o - 1]]);
+            }
+        }
+    }
+    return A[objectcount][capacity];
+}","public double knapSack(double[] values, int[] volumes, int capacity) {
+    assert values.length == volumes.length;
+        int objectcount = values.length;
+
+        double[][] A = new double[objectcount + 1][capacity + 1];
+        for (int o = 0; o <= objectcount; o++)
+        {
+            for (int w = 0; w <= capacity; w++)
+            {
+                if (w == 0 || o == 0)
+                {
+                    A[o][w] = 0;
+                }
+                else if (volumes[o - 1] > w)
+                {
+                    A[o][w] = A[o - 1][w];
+                }
+                else
+                {
+                    if (A[o - 1][w] > (values[o - 1]
+                            + A[o - 1][w - volumes[o - 1]]))
+                    {
+                        A[o][w] = A[o - 1][w];
+                    }
+                    else
+                    {
+                        A[o][w] = values[o - 1] + A[o - 1][w - volumes[o - 1]];
+                    }
+
+                }
+            }
+        }
+        return A[objectcount][capacity];
+}","public double knapSack(double[] values, int[] volumes, int capacity) {
+    assert values.length == volumes.length;
+    int objectcount = values.length;
+    double[][] A = new double[objectcount + 1][capacity + 1];
+    for (int o = 0; o <= objectcount; o++) {
+        for (int w = 0; w <= capacity; w++) {
+            if (w == 0 || o == 0) {
+                A[o][w] = 0;
+            } else if (volumes[o - 1] > w) {
+                A[o][w] = A[o - 1][w];
+            } else {
+                // Fix: For zero-volume items, only allow including each item once
+                A[o][w] = Math.max(A[o - 1][w], values[o - 1] + A[o - 1][w - volumes[o - 1]]);
+            }
+        }
+    }
+    return A[objectcount][capacity];
+}"
+286,20_21-3-1-java,HGWKILD6,java,1,exact_replace_success,True,"public double knapSack(double[] values, int[] volumes, int capacity) {
+    assert values.length == volumes.length;
+    int n = values.length;
+
+       if (n <= 0 ||capacity <= 0) {
+           return 0.0;
+       }
+
+       double[][] matrix = new double[n + 1][capacity + 1];
+       for (int j = 0; j <= capacity; j++) {
+           matrix[0][j] = 0.0;
+       }
+
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= capacity; j++) {
+                if (volumes[i - 1] > j) {
+                    matrix[i][j] = matrix[i - 1][j];
+                } else {
+                    matrix[i][j] = Math.max(
+                            matrix[i - 1][j],
+                            matrix[i - 1][j - volumes[i - 1]] + values[i - 1]
+                    );
+                }
+            }
+        }
+
+        return matrix[n][capacity];
+}","public double knapSack(double[] values, int[] volumes, int capacity) {
+    assert values.length == volumes.length;
+    int n = values.length;
+
+       if (n <= 0 ||capacity <= 0) {
+           return 0.0;
+       }
+
+       double[][] matrix = new double[n + 1][capacity + 1];
+       for (int j = 0; j <= capacity; j++) {
+           matrix[0][j] = 0.0;
+       }
+
+        for (int i = 1; i <= n; i++) {
+            for (int j = 0; j <= capacity; j++) { // FIX: start from 0
+                if (volumes[i - 1] > j) {
+                    matrix[i][j] = matrix[i - 1][j];
+                } else {
+                    matrix[i][j] = Math.max(
+                            matrix[i - 1][j],
+                            matrix[i - 1][j - volumes[i - 1]] + values[i - 1]
+                    );
+                }
+            }
+        }
+
+        return matrix[n][capacity];
+}","public double knapSack(double[] values, int[] volumes, int capacity) {
+    assert values.length == volumes.length;
+    int n = values.length;
+
+       if (n <= 0 ||capacity <= 0) {
+           return 0.0;
+       }
+
+       double[][] matrix = new double[n + 1][capacity + 1];
+       for (int j = 0; j <= capacity; j++) {
+           matrix[0][j] = 0.0;
+       }
+
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= capacity; j++) {
+                if (volumes[i - 1] > j) {
+                    matrix[i][j] = matrix[i - 1][j];
+                } else {
+                    matrix[i][j] = Math.max(
+                            matrix[i - 1][j],
+                            matrix[i - 1][j - volumes[i - 1]] + values[i - 1]
+                    );
+                }
+            }
+        }
+
+        return matrix[n][capacity];
+}","public double knapSack(double[] values, int[] volumes, int capacity) {
+    assert values.length == volumes.length;
+    int n = values.length;
+
+       if (n <= 0 ||capacity <= 0) {
+           return 0.0;
+       }
+
+       double[][] matrix = new double[n + 1][capacity + 1];
+       for (int j = 0; j <= capacity; j++) {
+           matrix[0][j] = 0.0;
+       }
+
+        for (int i = 1; i <= n; i++) {
+            for (int j = 0; j <= capacity; j++) { // FIX: start from 0
+                if (volumes[i - 1] > j) {
+                    matrix[i][j] = matrix[i - 1][j];
+                } else {
+                    matrix[i][j] = Math.max(
+                            matrix[i - 1][j],
+                            matrix[i - 1][j - volumes[i - 1]] + values[i - 1]
+                    );
+                }
+            }
+        }
+
+        return matrix[n][capacity];
+}"
+288,20_21-3-1-java,IDXXONOK,java,1,no_effect_patch,False,"public double knapSack(double[] values, int[] volumes, int capacity) {
+    if (values.length != volumes.length)
+    {
+        return 0.0;
+    }
+    
+    else if (values.length <= 0 || capacity <= 0) {
+        return 0.0;
+    }
+
+    double[][] m = new double[values.length + 1][capacity + 1];
+    for (int i = 0; i <= values.length; i++) {
+        m[i][0] = 0.0;
+    }
+    for (int w = 0; w <= capacity; w++) {
+        m[0][w] = 0.0;
+    }
+
+    for (int i = 0; i <= values.length; i++) {
+        for (int w = 1; w <= capacity; w++) { 
+	    if (i == 0 || capacity == 0){
+	    	m[i][w] = 0.0;
+	    }
+            else if (i > 0 && (w > 0 && volumes[i - 1] > w)) {
+                m[i][w] = (double) m[i - 1][w];
+            } 
+	    else {
+                m[i][w] = (double) Math.max(
+                  m[i - 1][w], 
+                  m[i - 1][w - volumes[i - 1]] + values[i - 1]);
+            }
+        }
+    }
+    return (double) m[values.length][capacity];
+}","public double knapSack(double[] values, int[] volumes, int capacity) {
+    if (values.length != volumes.length)
+    {
+        return 0.0;
+    }
+    
+    else if (values.length <= 0 || capacity <= 0) {
+        return 0.0;
+    }
+
+    double[][] m = new double[values.length + 1][capacity + 1];
+    for (int i = 0; i <= values.length; i++) {
+        m[i][0] = 0.0;
+    }
+    for (int w = 0; w <= capacity; w++) {
+        m[0][w] = 0.0;
+    }
+
+    for (int i = 0; i <= values.length; i++) {
+        for (int w = 1; w <= capacity; w++) { 
+	    if (i == 0 || capacity == 0){
+	    	m[i][w] = 0.0;
+	    }
+            else if (i > 0 && (w > 0 && volumes[i - 1] > w)) {
+                m[i][w] = (double) m[i - 1][w];
+            } 
+	    else {
+                m[i][w] = (double) Math.max(
+                  m[i - 1][w], 
+                  m[i - 1][w - volumes[i - 1]] + values[i - 1]);
+            }
+        }
+    }
+    return (double) m[values.length][capacity];
+}","public double knapSack(double[] values, int[] volumes, int capacity) {
+    if (values.length != volumes.length)
+    {
+        return 0.0;
+    }
+    
+    else if (values.length <= 0 || capacity <= 0) {
+        return 0.0;
+    }
+
+    double[][] m = new double[values.length + 1][capacity + 1];
+    for (int i = 0; i <= values.length; i++) {
+        m[i][0] = 0.0;
+    }
+    for (int w = 0; w <= capacity; w++) {
+        m[0][w] = 0.0;
+    }
+
+    for (int i = 1; i <= values.length; i++) {
+        for (int w = 1; w <= capacity; w++) { 
+            if (volumes[i - 1] > w) {
+                m[i][w] = m[i - 1][w];
+            } 
+            else {
+                m[i][w] = Math.max(
+                  m[i - 1][w], 
+                  m[i - 1][w - volumes[i - 1]] + values[i - 1]);
+            }
+        }
+    }
+    return m[values.length][capacity];
+}","public double knapSack(double[] values, int[] volumes, int capacity) {
+    if (values.length != volumes.length)
+    {
+        return 0.0;
+    }
+    
+    else if (values.length <= 0 || capacity <= 0) {
+        return 0.0;
+    }
+
+    double[][] m = new double[values.length + 1][capacity + 1];
+    for (int i = 0; i <= values.length; i++) {
+        m[i][0] = 0.0;
+    }
+    for (int w = 0; w <= capacity; w++) {
+        m[0][w] = 0.0;
+    }
+
+    for (int i = 1; i <= values.length; i++) {
+        for (int w = 1; w <= capacity; w++) { 
+            if (volumes[i - 1] > w) {
+                m[i][w] = m[i - 1][w];
+            } 
+            else {
+                m[i][w] = Math.max(
+                  m[i - 1][w], 
+                  m[i - 1][w - volumes[i - 1]] + values[i - 1]);
+            }
+        }
+    }
+    return m[values.length][capacity];
+}"
+292,20_21-3-1-java,PFOC4BG7,java,1,exact_replace_success,True,"public double knapSack(double[] values, int[] volumes, int capacity) {
+	assert values.length == volumes.length;
+
+	double[][] A = new double[values.length + 1][capacity + 1];
+	
+	for(int k = 1; k <= values.length; k++) {
+	    for(int l = 1; l <= capacity; l++) {
+    		if(volumes[k - 1] > l) {
+    		    A[k][l] = A[k - 1][l];
+    		} else if(A[k - 1][l - volumes[k - 1]] + values[k-1] > A[k - 1][l]) {
+    		    A[k][l] = A[k - 1][l - volumes[k - 1]] + values[k - 1];
+    		} else {
+    		    A[k][l] = A[k - 1][l];
+    		}
+	    }
+	}
+
+	return A[values.length][capacity];
+}","public double knapSack(double[] values, int[] volumes, int capacity) {
+	assert values.length == volumes.length;
+
+	double[][] A = new double[values.length + 1][capacity + 1];
+
+	for(int k = 1; k <= values.length; k++) {
+	    for(int l = 0; l <= capacity; l++) {
+    		if(volumes[k - 1] > l) {
+    		    A[k][l] = A[k - 1][l];
+    		} else if(A[k - 1][l - volumes[k - 1]] + values[k-1] > A[k - 1][l]) {
+    		    A[k][l] = A[k - 1][l - volumes[k - 1]] + values[k - 1];
+    		} else {
+    		    A[k][l] = A[k - 1][l];
+    		}
+	    }
+	}
+
+	return A[values.length][capacity];
+}","public double knapSack(double[] values, int[] volumes, int capacity) {
+	assert values.length == volumes.length;
+
+	double[][] A = new double[values.length + 1][capacity + 1];
+	
+	for(int k = 1; k <= values.length; k++) {
+	    for(int l = 1; l <= capacity; l++) {
+    		if(volumes[k - 1] > l) {
+    		    A[k][l] = A[k - 1][l];
+    		} else if(A[k - 1][l - volumes[k - 1]] + values[k-1] > A[k - 1][l]) {
+    		    A[k][l] = A[k - 1][l - volumes[k - 1]] + values[k - 1];
+    		} else {
+    		    A[k][l] = A[k - 1][l];
+    		}
+	    }
+	}
+
+	return A[values.length][capacity];
+}","public double knapSack(double[] values, int[] volumes, int capacity) {
+	assert values.length == volumes.length;
+
+	double[][] A = new double[values.length + 1][capacity + 1];
+	
+	for(int k = 1; k <= values.length; k++) {
+	    for(int l = 0; l <= capacity; l++) {
+    		if(volumes[k - 1] > l) {
+    		    A[k][l] = A[k - 1][l];
+    		} else if(A[k - 1][l - volumes[k - 1]] + values[k-1] > A[k - 1][l]) {
+    		    A[k][l] = A[k - 1][l - volumes[k - 1]] + values[k - 1];
+    		} else {
+    		    A[k][l] = A[k - 1][l];
+    		}
+	    }
+	}
+
+	return A[values.length][capacity];
+}"
+293,20_21-3-1-java,RCWOOGFR,java,1,exact_replace_success,True,"public double knapSack(double[] values, int[] volumes, int capacity) {
+        assert values.length == volumes.length;
+        int n = values.length;
+        if (n <= 0 || capacity <= 0) {
+            return 0;
+        }
+
+        double[][] matrix = new double[n + 1][capacity + 1];
+        for (int j = 0; j <= capacity; j++) {
+            matrix[0][j] = 0;
+        }
+
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= capacity; j++) { 
+                if (volumes[i - 1] > j) {
+                    matrix[i][j] = matrix[i - 1][j];
+                } else {
+                    matrix[i][j] = Math.max(
+                      matrix[i - 1][j], 
+                      matrix[i - 1][j - volumes[i - 1]] + values[i - 1]);
+                }
+            }
+        }
+        return matrix[n][capacity];
+    }","public double knapSack(double[] values, int[] volumes, int capacity) {
+        assert values.length == volumes.length;
+        int n = values.length;
+        if (n <= 0 || capacity <= 0) {
+            return 0;
+        }
+
+        double[][] matrix = new double[n + 1][capacity + 1];
+        for (int j = 0; j <= capacity; j++) {
+            matrix[0][j] = 0;
+        }
+
+        for (int i = 1; i <= n; i++) {
+            for (int j = 0; j <= capacity; j++) {
+                if (volumes[i - 1] > j) {
+                    matrix[i][j] = matrix[i - 1][j];
+                } else {
+                    matrix[i][j] = Math.max(
+                      matrix[i - 1][j],
+                      matrix[i - 1][j - volumes[i - 1]] + values[i - 1]);
+                }
+            }
+        }
+        return matrix[n][capacity];
+    }","public double knapSack(double[] values, int[] volumes, int capacity) {
+        assert values.length == volumes.length;
+        int n = values.length;
+        if (n <= 0 || capacity <= 0) {
+            return 0;
+        }
+
+        double[][] matrix = new double[n + 1][capacity + 1];
+        for (int j = 0; j <= capacity; j++) {
+            matrix[0][j] = 0;
+        }
+
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= capacity; j++) { 
+                if (volumes[i - 1] > j) {
+                    matrix[i][j] = matrix[i - 1][j];
+                } else {
+                    matrix[i][j] = Math.max(
+                      matrix[i - 1][j], 
+                      matrix[i - 1][j - volumes[i - 1]] + values[i - 1]);
+                }
+            }
+        }
+        return matrix[n][capacity];
+    }","public double knapSack(double[] values, int[] volumes, int capacity) {
+        assert values.length == volumes.length;
+        int n = values.length;
+        if (n <= 0 || capacity <= 0) {
+            return 0;
+        }
+
+        double[][] matrix = new double[n + 1][capacity + 1];
+        for (int j = 0; j <= capacity; j++) {
+            matrix[0][j] = 0;
+        }
+
+        for (int i = 1; i <= n; i++) {
+            for (int j = 0; j <= capacity; j++) { 
+                if (volumes[i - 1] > j) {
+                    matrix[i][j] = matrix[i - 1][j];
+                } else {
+                    matrix[i][j] = Math.max(
+                      matrix[i - 1][j], 
+                      matrix[i - 1][j - volumes[i - 1]] + values[i - 1]);
+                }
+            }
+        }
+        return matrix[n][capacity];
+    }"
+294,20_21-3-1-java,RN3W2UJG,java,1,made_things_worse_reverted,False,"public double knapSack(double[] values, int[] volumes, int capacity) 
+{
+    assert values.length == volumes.length;
+    double[][] table = new double[volumes.length+1][capacity+1];
+    if(capacity == 0)
+    {
+        return 0.0;
+    }
+    for (int i = 0; i < volumes.length+1; i++)
+    {
+        for (int j = 0; j < capacity+1; j++)
+        {
+            table[i][0] = 0;
+            table[0][j] = 0;
+        }
+    }
+    
+    for (int k = 1; k < volumes.length+1; k++)
+    {
+        for (int l = 1; l < capacity+1; l++)
+        {
+            if(volumes[k-1] > l)
+            {
+                table[k][l] = table[k-1][l];
+            }
+            else
+            {
+                if(table[k-1][l-volumes[k-1]] + values[k-1] > table[k-1][l])
+                {
+                    table[k][l] = table[k-1][l-volumes[k-1]] + values[k-1];
+                }
+                else
+                {
+                    table[k][l] = table[k-1][l];
+                }
+            }
+        }
+    }
+    return table[volumes.length][capacity];
+}","public double knapSack(double[] values, int[] volumes, int capacity) 
+{
+    assert values.length == volumes.length;
+    double[][] table = new double[volumes.length+1][capacity+1];
+    if(capacity == 0)
+    {
+        return 0.0;
+    }
+    for (int i = 0; i < volumes.length+1; i++)
+    {
+        for (int j = 0; j < capacity+1; j++)
+        {
+            table[i][0] = 0;
+            table[0][j] = 0;
+        }
+    }
+    
+    for (int k = 1; k < volumes.length+1; k++)
+    {
+        for (int l = 1; l < capacity+1; l++)
+        {
+            if(volumes[k-1] > l)
+            {
+                table[k][l] = table[k-1][l];
+            }
+            else
+            {
+                if(table[k-1][l-volumes[k-1]] + values[k-1] > table[k-1][l])
+                {
+                    table[k][l] = table[k-1][l-volumes[k-1]] + values[k-1];
+                }
+                else
+                {
+                    table[k][l] = table[k-1][l];
+                }
+            }
+        }
+    }
+    return table[volumes.length][capacity];
+}","public double knapSack(double[] values, int[] volumes, int capacity) 
+{
+    assert values.length == volumes.length;
+    double[][] table = new double[volumes.length+1][capacity+1];
+    if(capacity == 0)
+    {
+        return 0.0;
+    }
+    for (int i = 0; i < volumes.length+1; i++)
+    {
+        for (int j = 0; j < capacity+1; j++)
+        {
+            table[i][0] = 0;
+            table[0][j] = 0;
+        }
+    }
+    
+    for (int k = 1; k < volumes.length+1; k++)
+    {
+        for (int l = 1; l < capacity+1; l++)
+        {
+            if(volumes[k-1] > l)
+            {
+                table[k][l] = table[k-1][l];
+            }
+            else
+            {
+                if(table[k-1][l-volumes[k-1]] + values[k-1] > table[k-1][l])
+                {
+                    table[k][l] = table[k-1][l-volumes[k-1]] + values[k-1];
+                }
+                else
+                {
+                    table[k][l] = table[k-1][l];
+                }
+            }
+        }
+    }
+    return table[volumes.length][capacity];
+}","public double knapSack(double[] values, int[] volumes, int capacity) 
+{
+    assert values.length == volumes.length;
+    double[][] table = new double[volumes.length+1][capacity+1];
+    if(capacity == 0)
+    {
+        return 0.0;
+    }
+    // Initialize only the first row and first column to zero
+    for (int i = 0; i < volumes.length+1; i++) {
+        table[i][0] = 0;
+    }
+    for (int j = 0; j < capacity+1; j++) {
+        table[0][j] = 0;
+    }
+    
+    for (int k = 1; k < volumes.length+1; k++)
+    {
+        for (int l = 1; l < capacity+1; l++)
+        {
+            if(volumes[k-1] > l)
+            {
+                table[k][l] = table[k-1][l];
+            }
+            else
+            {
+                if(table[k-1][l-volumes[k-1]] + values[k-1] > table[k-1][l])
+                {
+                    table[k][l] = table[k-1][l-volumes[k-1]] + values[k-1];
+                }
+                else
+                {
+                    table[k][l] = table[k-1][l];
+                }
+            }
+        }
+    }
+    return table[volumes.length][capacity];
+}"
+297,20_21-3-1-java,UYT75U6D,java,1,exact_replace_success,True,"public double knapSack(double[] values, int[] volumes, int capacity) {
+    assert values.length == volumes.length;
+
+    double[][] matrix = new double[capacity + 1][volumes.length + 1];
+
+    for(int i = 0; i <= volumes.length; i++) {
+      matrix[0][i] = 0.0;
+    }
+
+    for(int i = 1; i <= capacity; i++) {
+      matrix[i][0] = 0.0;
+    }
+
+    for(int i = 1; i < volumes.length + 1; i++) {
+       for(int w = 1; w < capacity + 1; w++) {
+         if(volumes[i-1] > w){
+           matrix[w][i] = matrix[w][i-1];
+         }
+         else {
+           if(matrix[w][i-1]>(values[i-1] + matrix[w - volumes[i-1]][i-1])) 
+           {
+             matrix[w][i] = matrix[w][i-1];
+           } 
+           else {
+             matrix[w][i] = values[i-1] + matrix[w - volumes[i-1]][i-1];
+           }
+         }
+       }
+    }
+
+    return matrix[capacity][volumes.length];
+}","public double knapSack(double[] values, int[] volumes, int capacity) {
+    assert values.length == volumes.length;
+
+    double[][] matrix = new double[capacity + 1][volumes.length + 1];
+
+    for(int i = 0; i <= volumes.length; i++) {
+      matrix[0][i] = 0.0;
+    }
+
+    for(int i = 1; i <= capacity; i++) {
+      matrix[i][0] = 0.0;
+    }
+
+    for(int i = 1; i < volumes.length + 1; i++) {
+       for(int w = 0; w < capacity + 1; w++) { // start w from 0 to handle zero-volume items
+         if(volumes[i-1] > w){
+           matrix[w][i] = matrix[w][i-1];
+         }
+         else {
+           if(matrix[w][i-1]>(values[i-1] + matrix[w - volumes[i-1]][i-1]))
+           {
+             matrix[w][i] = matrix[w][i-1];
+           }
+           else {
+             matrix[w][i] = values[i-1] + matrix[w - volumes[i-1]][i-1];
+           }
+         }
+       }
+    }
+
+    return matrix[capacity][volumes.length];
+}","public double knapSack(double[] values, int[] volumes, int capacity) {
+    assert values.length == volumes.length;
+
+    double[][] matrix = new double[capacity + 1][volumes.length + 1];
+
+    for(int i = 0; i <= volumes.length; i++) {
+      matrix[0][i] = 0.0;
+    }
+
+    for(int i = 1; i <= capacity; i++) {
+      matrix[i][0] = 0.0;
+    }
+
+    for(int i = 1; i < volumes.length + 1; i++) {
+       for(int w = 1; w < capacity + 1; w++) {
+         if(volumes[i-1] > w){
+           matrix[w][i] = matrix[w][i-1];
+         }
+         else {
+           if(matrix[w][i-1]>(values[i-1] + matrix[w - volumes[i-1]][i-1])) 
+           {
+             matrix[w][i] = matrix[w][i-1];
+           } 
+           else {
+             matrix[w][i] = values[i-1] + matrix[w - volumes[i-1]][i-1];
+           }
+         }
+       }
+    }
+
+    return matrix[capacity][volumes.length];
+}","public double knapSack(double[] values, int[] volumes, int capacity) {
+    assert values.length == volumes.length;
+
+    double[][] matrix = new double[capacity + 1][volumes.length + 1];
+
+    for(int i = 0; i <= volumes.length; i++) {
+      matrix[0][i] = 0.0;
+    }
+
+    for(int i = 1; i <= capacity; i++) {
+      matrix[i][0] = 0.0;
+    }
+
+    for(int i = 1; i < volumes.length + 1; i++) {
+       for(int w = 0; w < capacity + 1; w++) { // start w from 0 to handle zero-volume items
+         if(volumes[i-1] > w){
+           matrix[w][i] = matrix[w][i-1];
+         }
+         else {
+           if(matrix[w][i-1]>(values[i-1] + matrix[w - volumes[i-1]][i-1])) 
+           {
+             matrix[w][i] = matrix[w][i-1];
+           } 
+           else {
+             matrix[w][i] = values[i-1] + matrix[w - volumes[i-1]][i-1];
+           }
+         }
+       }
+    }
+
+    return matrix[capacity][volumes.length];
+}"
+299,20_21-3-1-java,WURVTKED,java,1,exact_replace_success,True,"double knapSack(double[] values, int[] volumes, int capacity)
+{
+    assert values.length == volumes.length;
+    int n = volumes.length + 1;
+    int W = capacity + 1;
+    double[][] table = new double[n][W];
+
+    if (capacity == 0) 
+    {
+        return 0.0;
+    }
+
+    for (int i = 1; i < n; i++)
+    {
+        for (int j = 1; j < W; j++)
+        {
+            if (volumes[i - 1] > j)
+            {
+                table[i][j] = table[i - 1][j];
+            }
+            else if(table[i - 1][j - volumes[i - 1]] + values[i - 1] > table[i - 1][j])
+            {
+                table[i][j] = table[i - 1][j - volumes[i - 1]] + values[i - 1];
+            }
+            else
+            {
+                table[i][j] = table[i - 1][j];
+            }
+        }
+    }
+            return table[volumes.length][capacity];
+}","double knapSack(double[] values, int[] volumes, int capacity)
+{
+    assert values.length == volumes.length;
+    int n = volumes.length + 1;
+    int W = capacity + 1;
+    double[][] table = new double[n][W];
+
+    if (capacity == 0)
+    {
+        return 0.0;
+    }
+
+    for (int i = 1; i < n; i++)
+    {
+        for (int j = 0; j < W; j++) // FIX: start at 0 instead of 1
+        {
+            if (volumes[i - 1] > j)
+            {
+                table[i][j] = table[i - 1][j];
+            }
+            else if(table[i - 1][j - volumes[i - 1]] + values[i - 1] > table[i - 1][j])
+            {
+                table[i][j] = table[i - 1][j - volumes[i - 1]] + values[i - 1];
+            }
+            else
+            {
+                table[i][j] = table[i - 1][j];
+            }
+        }
+    }
+            return table[volumes.length][capacity];
+}","double knapSack(double[] values, int[] volumes, int capacity)
+{
+    assert values.length == volumes.length;
+    int n = volumes.length + 1;
+    int W = capacity + 1;
+    double[][] table = new double[n][W];
+
+    if (capacity == 0) 
+    {
+        return 0.0;
+    }
+
+    for (int i = 1; i < n; i++)
+    {
+        for (int j = 1; j < W; j++)
+        {
+            if (volumes[i - 1] > j)
+            {
+                table[i][j] = table[i - 1][j];
+            }
+            else if(table[i - 1][j - volumes[i - 1]] + values[i - 1] > table[i - 1][j])
+            {
+                table[i][j] = table[i - 1][j - volumes[i - 1]] + values[i - 1];
+            }
+            else
+            {
+                table[i][j] = table[i - 1][j];
+            }
+        }
+    }
+            return table[volumes.length][capacity];
+}","double knapSack(double[] values, int[] volumes, int capacity)
+{
+    assert values.length == volumes.length;
+    int n = volumes.length + 1;
+    int W = capacity + 1;
+    double[][] table = new double[n][W];
+
+    if (capacity == 0) 
+    {
+        return 0.0;
+    }
+
+    for (int i = 1; i < n; i++)
+    {
+        for (int j = 0; j < W; j++) // FIX: start at 0 instead of 1
+        {
+            if (volumes[i - 1] > j)
+            {
+                table[i][j] = table[i - 1][j];
+            }
+            else if(table[i - 1][j - volumes[i - 1]] + values[i - 1] > table[i - 1][j])
+            {
+                table[i][j] = table[i - 1][j - volumes[i - 1]] + values[i - 1];
+            }
+            else
+            {
+                table[i][j] = table[i - 1][j];
+            }
+        }
+    }
+            return table[volumes.length][capacity];
+}"
+300,20_21-3-1-java,WXTSDXN6,java,1,exact_replace_success,True,"public double knapSack(double[] values, int[] volumes, int capacity) {
+    assert values.length == volumes.length;
+    
+    if (values.length <= 0 || capacity <= 0) {
+        return 0.0;
+    }
+
+    double[][] m = new double[values.length + 1][capacity + 1];
+    for (int j = 0; j <= capacity; j++) {
+        m[0][j] = 0.0;
+    }
+
+    for (int i = 1; i <= values.length; i++) {
+        for (int j = 1; j <= capacity; j++) { 
+            if (volumes[i - 1] > j) {
+                m[i][j] = m[i - 1][j];
+            } else {
+                m[i][j] = Math.max(
+                  m[i - 1][j], 
+                  m[i - 1][j - volumes[i - 1]] + values[i - 1]);
+            }
+        }
+    }
+    return m[values.length][capacity];
+}","public double knapSack(double[] values, int[] volumes, int capacity) {
+    assert values.length == volumes.length;
+
+    if (values.length <= 0 || capacity <= 0) {
+        return 0.0;
+    }
+
+    double[][] m = new double[values.length + 1][capacity + 1];
+    for (int j = 0; j <= capacity; j++) {
+        m[0][j] = 0.0;
+    }
+
+    for (int i = 1; i <= values.length; i++) {
+        for (int j = 0; j <= capacity; j++) {
+            if (volumes[i - 1] > j) {
+                m[i][j] = m[i - 1][j];
+            } else {
+                m[i][j] = Math.max(
+                  m[i - 1][j],
+                  m[i - 1][j - volumes[i - 1]] + values[i - 1]);
+            }
+        }
+    }
+    return m[values.length][capacity];
+}","public double knapSack(double[] values, int[] volumes, int capacity) {
+    assert values.length == volumes.length;
+    
+    if (values.length <= 0 || capacity <= 0) {
+        return 0.0;
+    }
+
+    double[][] m = new double[values.length + 1][capacity + 1];
+    for (int j = 0; j <= capacity; j++) {
+        m[0][j] = 0.0;
+    }
+
+    for (int i = 1; i <= values.length; i++) {
+        for (int j = 1; j <= capacity; j++) { 
+            if (volumes[i - 1] > j) {
+                m[i][j] = m[i - 1][j];
+            } else {
+                m[i][j] = Math.max(
+                  m[i - 1][j], 
+                  m[i - 1][j - volumes[i - 1]] + values[i - 1]);
+            }
+        }
+    }
+    return m[values.length][capacity];
+}","public double knapSack(double[] values, int[] volumes, int capacity) {
+    assert values.length == volumes.length;
+    
+    if (values.length <= 0 || capacity <= 0) {
+        return 0.0;
+    }
+
+    double[][] m = new double[values.length + 1][capacity + 1];
+    for (int j = 0; j <= capacity; j++) {
+        m[0][j] = 0.0;
+    }
+
+    for (int i = 1; i <= values.length; i++) {
+        for (int j = 0; j <= capacity; j++) { 
+            if (volumes[i - 1] > j) {
+                m[i][j] = m[i - 1][j];
+            } else {
+                m[i][j] = Math.max(
+                  m[i - 1][j], 
+                  m[i - 1][j - volumes[i - 1]] + values[i - 1]);
+            }
+        }
+    }
+    return m[values.length][capacity];
+}"
+321,20_21-3-2-java,RN3W2UJG,java,1,exact_replace_success,True,"int calc(int N, int[][] A){
+    return null;
+}
+private boolean isCorrect(double[] c, int[] v, int m, double solution) {
+
+        assert c.length == v.length;
+
+
+
+        int n = c.length;
+
+        double[][] Result = new double[n+1][];
+
+    
+
+        for(int i = 0; i < n+1; ++i) {
+
+            Result[i] = new double[m+1];
+
+        }
+
+    
+
+        for(int i = n-1; i > -1; --i) {
+
+            for(int j = 0; j < m+1; ++j) {
+
+                result = computeResult (Musterlösung);
+
+                }
+
+            }
+
+        }
+
+        return Math.abs(Result[0][m] - solution) < 0.01;
+
+    }","int calc(int N, int[][] A){
+    ArrayList<ArrayList<Integer>> graph = new ArrayList<>(N+1);
+    for (int i = 0; i <= N; i++) {
+        graph.add(new ArrayList<>());
+    }
+    for (int i = 0; i < A.length; i++) {
+        int start = A[i][0];
+        int end = A[i][1];
+        graph.get(start).add(end);
+    }
+    int[] memo = new int[N+1];
+    for (int i = 0; i <= N; i++) {
+        memo[i] = -1;
+    }
+    int res = 0;
+    for (int i = 1; i <= N; i++) {
+        res = Math.max(res, dfs(i, graph, memo));
+    }
+    return res;
+}
+
+int dfs(int node, ArrayList<ArrayList<Integer>> graph, int[] memo) {
+    if (memo[node] != -1) return memo[node];
+    int maxLen = 0;
+    for (int next : graph.get(node)) {
+        maxLen = Math.max(maxLen, 1 + dfs(next, graph, memo));
+    }
+    memo[node] = maxLen;
+    return maxLen;
+}
+private boolean isCorrect(double[] c, int[] v, int m, double solution) {
+
+        assert c.length == v.length;
+
+
+
+        int n = c.length;
+
+        double[][] Result = new double[n+1][];
+
+
+
+        for(int i = 0; i < n+1; ++i) {
+
+            Result[i] = new double[m+1];
+
+        }
+
+
+
+        for(int i = n-1; i > -1; --i) {
+
+            for(int j = 0; j < m+1; ++j) {
+
+                result = computeResult (Musterlösung);
+
+                }
+
+            }
+
+        }
+
+        return Math.abs(Result[0][m] - solution) < 0.01;
+
+    }","int calc(int N, int[][] A){
+    return null;
+}","int calc(int N, int[][] A){
+    ArrayList<ArrayList<Integer>> graph = new ArrayList<>(N+1);
+    for (int i = 0; i <= N; i++) {
+        graph.add(new ArrayList<>());
+    }
+    for (int i = 0; i < A.length; i++) {
+        int start = A[i][0];
+        int end = A[i][1];
+        graph.get(start).add(end);
+    }
+    int[] memo = new int[N+1];
+    for (int i = 0; i <= N; i++) {
+        memo[i] = -1;
+    }
+    int res = 0;
+    for (int i = 1; i <= N; i++) {
+        res = Math.max(res, dfs(i, graph, memo));
+    }
+    return res;
+}
+
+int dfs(int node, ArrayList<ArrayList<Integer>> graph, int[] memo) {
+    if (memo[node] != -1) return memo[node];
+    int maxLen = 0;
+    for (int next : graph.get(node)) {
+        maxLen = Math.max(maxLen, 1 + dfs(next, graph, memo));
+    }
+    memo[node] = maxLen;
+    return maxLen;
+}
+"

@@ -1,0 +1,676 @@
+case_id,question_id,student_id,language,candidate_id,patch_status,patch_applied,student_code,patched_code,replace_block,with_block
+150,21_22-1-1-python,56KIOCH6,python,1,exact_replace_success,True,"def calc(n):
+    m = int(n)
+    return pow(2,m,1000000007) - 1","def calc(n):
+    m = int(n)
+    return (pow(2, m, 1000000007) - 1) % 1000000007","def calc(n):
+    m = int(n)
+    return pow(2,m,1000000007) - 1","def calc(n):
+    m = int(n)
+    return (pow(2, m, 1000000007) - 1) % 1000000007"
+151,21_22-1-1-python,5UQSXBL3,python,1,exact_replace_success,True,"def calc(n0):
+    return pow(2, int(n0), 1000000007) - 1
+    
+
+""""""_____________________________________________
+/ Da fuer alle natuerlichen Zahlen n gilt, dass \
+| (2^n)%1000000007 != 0, gilt somit auch:       |
+\ ((2^n)-1)%1000000007 == ((2^n)%1000000007)-1  /
+ -----------------------------------------------
+      \                    / \  //\
+       \    |\___/|      /   \//  \\
+            /0  0  \__  /    //  | \ \
+           /     /  \/_/    //   |  \  \
+           @_^_@'/   \/_   //    |   \   \
+           //_^_/     \/_ //     |    \    \
+        ( //) |        \///      |     \     \
+      ( / /) _|_ /   )  //       |      \     _\
+    ( // /) '/,_ _ _/  ( ; -.    |    _ _\.-~        .-~~~^-.
+  (( / / )) ,-{        _      `-.|.-~-.           .~         `.
+ (( // / ))  '/\      /                 ~-. _ .-~      .-~^-.  \
+ (( /// ))      `.   {            }                   /      \  \
+  (( / ))     .----~-.\        \-'                 .~         \  `. \^-.
+             ///.----..>        \             _ -~             `.  ^-`  ^-_
+               ///-._ _ _ _ _ _ _}^ - - - - ~                     ~-- ,.-~
+                                                                  /.-~""""""","def calc(n0):
+    MOD = 1000000007
+    def modexp(a, b, mod):
+        res = 1
+        while b > 0:
+            if b % 2:
+                res = (res * a) % mod
+            a = (a * a) % mod
+            b //= 2
+        return res
+    ans = modexp(2, int(n0), MOD) - 1
+    return ans if ans >= 0 else ans + MOD
+
+
+""""""_____________________________________________
+/ Da fuer alle natuerlichen Zahlen n gilt, dass \
+| (2^n)%1000000007 != 0, gilt somit auch:       |
+\ ((2^n)-1)%1000000007 == ((2^n)%1000000007)-1  /
+ -----------------------------------------------
+      \                    / \  //\
+       \    |\___/|      /   \//  \\
+            /0  0  \__  /    //  | \ \
+           /     /  \/_/    //   |  \  \
+           @_^_@'/   \/_   //    |   \   \
+           //_^_/     \/_ //     |    \    \
+        ( //) |        \///      |     \     \
+      ( / /) _|_ /   )  //       |      \     _\
+    ( // /) '/,_ _ _/  ( ; -.    |    _ _\.-~        .-~~~^-.
+  (( / / )) ,-{        _      `-.|.-~-.           .~         `.
+ (( // / ))  '/\      /                 ~-. _ .-~      .-~^-.  \
+ (( /// ))      `.   {            }                   /      \  \
+  (( / ))     .----~-.\        \-'                 .~         \  `. \^-.
+             ///.----..>        \             _ -~             `.  ^-`  ^-_
+               ///-._ _ _ _ _ _ _}^ - - - - ~                     ~-- ,.-~
+                                                                  /.-~""""""","def calc(n0):
+    return pow(2, int(n0), 1000000007) - 1
+","def calc(n0):
+    MOD = 1000000007
+    def modexp(a, b, mod):
+        res = 1
+        while b > 0:
+            if b % 2:
+                res = (res * a) % mod
+            a = (a * a) % mod
+            b //= 2
+        return res
+    ans = modexp(2, int(n0), MOD) - 1
+    return ans if ans >= 0 else ans + MOD
+"
+155,21_22-1-1-python,6PPAR4TV,python,1,made_things_worse_reverted,False,"def calc(n):
+    n = int(n)
+    if n<=2:
+        p = pow(2,n)-1
+        return(p%1000000007)
+    else :
+        if n%2 == 1:
+            R = 1
+            n = (n-1)//2
+            c = calc(n)+1
+            c = pow(c,2)%1000000007
+            res = (2*c)%1000000007
+            return(res-1)
+        else:
+            n = n//2
+            c = calc(n)+1
+            res = pow(c,2)%1000000007
+            return(res-1)
+    pass","def calc(n):
+    n = int(n)
+    if n<=2:
+        p = pow(2,n)-1
+        return(p%1000000007)
+    else :
+        if n%2 == 1:
+            R = 1
+            n = (n-1)//2
+            c = calc(n)+1
+            c = pow(c,2)%1000000007
+            res = (2*c)%1000000007
+            return(res-1)
+        else:
+            n = n//2
+            c = calc(n)+1
+            res = pow(c,2)%1000000007
+            return(res-1)
+    pass","def calc(n):
+    n = int(n)
+    if n<=2:
+        p = pow(2,n)-1
+        return(p%1000000007)
+    else :
+        if n%2 == 1:
+            R = 1
+            n = (n-1)//2
+            c = calc(n)+1
+            c = pow(c,2)%1000000007
+            res = (2*c)%1000000007
+            return(res-1)
+        else:
+            n = n//2
+            c = calc(n)+1
+            res = pow(c,2)%1000000007
+            return(res-1)
+    pass
+","def calc(n):
+    n = int(n)
+    if n == 0:
+        return -1
+    if n<=2:
+        p = pow(2,n)-1
+        return(p%1000000007)
+    else :
+        if n%2 == 1:
+            R = 1
+            n = (n-1)//2
+            c = calc(n)+1
+            c = pow(c,2)%1000000007
+            res = (2*c)%1000000007
+            return(res-1)
+        else:
+            n = n//2
+            c = calc(n)+1
+            res = pow(c,2)%1000000007
+            return(res-1)
+    pass
+"
+157,21_22-1-1-python,7XBTEU4B,python,1,made_things_worse_reverted,False,"def calc(n):
+  
+    n_int = int(n) % 1000000007
+    
+    split = 512
+
+    if n_int == 0:
+        return 0
+
+    mod = n_int % split
+  
+    n_gerade = (n_int-mod)//split
+    return (pow(pow(2,n_gerade) % 1000000007, split) * pow(2, mod) - 1) % 1000000007","def calc(n):
+  
+    n_int = int(n) % 1000000007
+    
+    split = 512
+
+    if n_int == 0:
+        return 0
+
+    mod = n_int % split
+  
+    n_gerade = (n_int-mod)//split
+    return (pow(pow(2,n_gerade) % 1000000007, split) * pow(2, mod) - 1) % 1000000007","def calc(n):
+  
+    n_int = int(n) % 1000000007
+    
+    split = 512
+
+    if n_int == 0:
+        return 0
+
+    mod = n_int % split
+  
+    n_gerade = (n_int-mod)//split
+    return (pow(pow(2,n_gerade) % 1000000007, split) * pow(2, mod) - 1) % 1000000007","def calc(n):
+    n_int = int(n)
+    split = 512
+    if n_int == 0:
+        return -1
+    mod = n_int % split
+    n_gerade = (n_int - mod) // split
+    return (pow(pow(2, n_gerade, 1000000007), split, 1000000007) * pow(2, mod, 1000000007) - 1) % 1000000007"
+161,21_22-1-1-python,DT7AUBV2,python,1,exact_replace_success,True,"def calc(n):
+    x = (pow2(n)-1) % 1000000007
+    return x
+    
+def pow2(n):
+    if n == 0:
+        return 1
+    
+    if n % 2 == 0:
+        x = pow2(n//2)
+        x = x * x % 1000000007
+        return x
+    
+    x = pow2(n-1)
+    x = (x << 1) % 1000000007
+    return x","def calc(n):
+    x = (pow2(n)-1)
+    return (x + 1000000007) % 1000000007
+
+def pow2(n):
+    if n == 0:
+        return 1
+
+    if n % 2 == 0:
+        x = pow2(n//2)
+        x = x * x % 1000000007
+        return x
+
+    x = pow2(n-1)
+    x = (x << 1) % 1000000007
+    return x","def calc(n):
+    x = (pow2(n)-1) % 1000000007
+    return x","def calc(n):
+    x = (pow2(n)-1)
+    return (x + 1000000007) % 1000000007"
+168,21_22-1-1-python,GUVEKSFT,python,1,exact_replace_success,True,"def calc(b):
+    if b == 0: return 0
+    return (twopowb(b) - 1) % 1000000007
+
+
+def twopowb(b):
+    if b == 1: return 2
+    if b % 2 == 0: # gerade
+        val = twopowb(b // 2)
+        return (val * val )% 1000000007
+    else: #b ungerade
+        return (twopowb(b - 1) * 2)% 1000000007","def calc(b):
+    if b == 0: return 0
+    return twopowb(b) - 1
+
+
+def twopowb(b):
+    if b == 1: return 2
+    if b % 2 == 0: # gerade
+        val = twopowb(b // 2)
+        return (val * val )% 1000000007
+    else: #b ungerade
+        return (twopowb(b - 1) * 2)% 1000000007","def calc(b):
+    if b == 0: return 0
+    return (twopowb(b) - 1) % 1000000007
+","def calc(b):
+    if b == 0: return 0
+    return twopowb(b) - 1
+"
+170,21_22-1-1-python,IP7Y5KKF,python,1,exact_replace_success,True,"def calc(n):
+    n = int(n)
+    if n<=2:
+        p = pow(2,n)-1
+        return(p%1000000007)
+    else :
+        if n%2 == 1:
+            R = 1
+            n = (n-1)//2
+            c = calc(n)+1
+             # print(c)
+            c = pow(c,2)%1000000007
+             # print(c)
+             # print(p)
+            res = (2*c)%1000000007
+             #print(res)
+            return(res-1)
+        else:
+            n = n//2
+            c = calc(n)+1
+            res = pow(c,2)%1000000007
+            return(res-1)
+    pass","def calc(n):
+    n = int(n)
+    if n == 0:
+        return 0
+    if n<=2:
+        p = pow(2,n)-1
+        return(p%1000000007)
+    else :
+        if n%2 == 1:
+            R = 1
+            n = (n-1)//2
+            c = calc(n)+1
+            c = pow(c,2)%1000000007
+            res = (2*c)%1000000007
+            return(res-1)
+        else:
+            n = n//2
+            c = calc(n)+1
+            res = pow(c,2)%1000000007
+            return(res-1)
+    pass","def calc(n):
+    n = int(n)
+    if n<=2:
+        p = pow(2,n)-1
+        return(p%1000000007)
+    else :
+        if n%2 == 1:
+            R = 1
+            n = (n-1)//2
+            c = calc(n)+1
+             # print(c)
+            c = pow(c,2)%1000000007
+             # print(c)
+             # print(p)
+            res = (2*c)%1000000007
+             #print(res)
+            return(res-1)
+        else:
+            n = n//2
+            c = calc(n)+1
+            res = pow(c,2)%1000000007
+            return(res-1)
+    pass
+","def calc(n):
+    n = int(n)
+    if n == 0:
+        return 0
+    if n<=2:
+        p = pow(2,n)-1
+        return(p%1000000007)
+    else :
+        if n%2 == 1:
+            R = 1
+            n = (n-1)//2
+            c = calc(n)+1
+            c = pow(c,2)%1000000007
+            res = (2*c)%1000000007
+            return(res-1)
+        else:
+            n = n//2
+            c = calc(n)+1
+            res = pow(c,2)%1000000007
+            return(res-1)
+    pass
+"
+172,21_22-1-1-python,JZTB6RAW,python,1,made_things_worse_reverted,False,"def calc(n):
+
+    n_int = int(n) % 1000000007
+
+    split = 512
+
+    if n_int == 0:
+        return 0
+
+    mod = n_int % split
+
+    n_gerade = (n_int-mod)//split
+    return (pow(pow(2,n_gerade) % 1000000007, split) * pow(2, mod) - 1) % 1000000007","def calc(n):
+
+    n_int = int(n) % 1000000007
+
+    split = 512
+
+    if n_int == 0:
+        return 0
+
+    mod = n_int % split
+
+    n_gerade = (n_int-mod)//split
+    return (pow(pow(2,n_gerade) % 1000000007, split) * pow(2, mod) - 1) % 1000000007","def calc(n):
+
+    n_int = int(n) % 1000000007
+
+    split = 512
+
+    if n_int == 0:
+        return 0
+
+    mod = n_int % split
+
+    n_gerade = (n_int-mod)//split
+    return (pow(pow(2,n_gerade) % 1000000007, split) * pow(2, mod) - 1) % 1000000007
+","def calc(n):
+
+    n_int = int(n) % 1000000007
+
+    split = 512
+
+    if n_int == 0:
+        return -1
+
+    mod = n_int % split
+
+    n_gerade = (n_int-mod)//split
+    return (pow(pow(2,n_gerade) % 1000000007, split) * pow(2, mod) - 1) % 1000000007
+"
+176,21_22-1-1-python,NSYSX25L,python,1,exact_replace_success,True,"def calc(n):
+    return (pow(2, n)-1) % 1000000007
+    
+# Die Folge entspricht der Formel a(n) = 2^n-1
+
+def pow(a, b):
+    if b == 0:
+        return 1
+    if b%2 == 0:
+        c = b//2
+        d = pow(a, c) % 1000000007
+        return d * d
+    else:
+        c = b-1
+        return pow(a, c) * a","def calc(n):
+    return (pow(2, n)-1) % 1000000007
+
+# Die Folge entspricht der Formel a(n) = 2^n-1
+
+def pow(a, b):
+    if b == 0:
+        return 1
+    if b%2 == 0:
+        c = b//2
+        d = pow(a, c) % 1000000007
+        return (d * d) % 1000000007
+    else:
+        c = b-1
+        return (pow(a, c) * a) % 1000000007","def pow(a, b):
+    if b == 0:
+        return 1
+    if b%2 == 0:
+        c = b//2
+        d = pow(a, c) % 1000000007
+        return d * d
+    else:
+        c = b-1
+        return pow(a, c) * a
+","def pow(a, b):
+    if b == 0:
+        return 1
+    if b%2 == 0:
+        c = b//2
+        d = pow(a, c) % 1000000007
+        return (d * d) % 1000000007
+    else:
+        c = b-1
+        return (pow(a, c) * a) % 1000000007
+"
+177,21_22-1-1-python,OUNQV2P3,python,1,exact_replace_success,True,"def calc(n):
+    return (powerOfTwo(n) - 1) % 1000000007
+
+def powerOfTwo(n):
+    if(n == 0):
+        return 1
+    if(n % 2 == 0):
+        #even
+        x = powerOfTwo(n//2) % 1000000007
+        return x * x % 1000000007
+    else:
+        #odd
+        return powerOfTwo(n - 1) * 2 % 1000000007","def calc(n):
+    return (powerOfTwo(n) - 1 + 1000000007) % 1000000007
+
+def powerOfTwo(n):
+    if(n == 0):
+        return 1
+    if(n % 2 == 0):
+        #even
+        x = powerOfTwo(n//2) % 1000000007
+        return x * x % 1000000007
+    else:
+        #odd
+        return powerOfTwo(n - 1) * 2 % 1000000007","def calc(n):
+    return (powerOfTwo(n) - 1) % 1000000007","def calc(n):
+    return (powerOfTwo(n) - 1 + 1000000007) % 1000000007"
+190,21_22-1-1-python,VYSPL56W,python,1,no_effect_patch,False,"def calc(n):
+    n = int(n)
+    if n == 0:
+        return 0
+    else:
+        help = pow_mod(2, n, 1000000007)
+        return (help + n - (n + 1))
+
+
+
+def pow_mod(b, e, m):
+    if e == 0:
+        return 1
+    elif e == 1:
+        return b % m
+    else:
+        root = pow_mod(b, e // 2, m)
+        if e % 2 == 0:
+            return (root * root) % m
+        else:
+            return (root * root * b) % m","def calc(n):
+    n = int(n)
+    if n == 0:
+        return 0
+    else:
+        help = pow_mod(2, n, 1000000007)
+        return (help + n - (n + 1))
+
+
+
+def pow_mod(b, e, m):
+    if e == 0:
+        return 1
+    elif e == 1:
+        return b % m
+    else:
+        root = pow_mod(b, e // 2, m)
+        if e % 2 == 0:
+            return (root * root) % m
+        else:
+            return (root * root * b) % m","def calc(n):
+    n = int(n)
+    if n == 0:
+        return 0
+    else:
+        help = pow_mod(2, n, 1000000007)
+        return (help - 1) % 1000000007","def calc(n):
+    n = int(n)
+    if n == 0:
+        return 0
+    else:
+        help = pow_mod(2, n, 1000000007)
+        return (help - 1) % 1000000007"
+194,21_22-1-1-python,XLR3XUPE,python,1,made_things_worse_reverted,False,"def binexp(a):
+    y = 1; z = 2
+    for x in ""{0:b}"".format(a)[::-1]:
+        if x == ""1"":
+            y *= z
+        z *= z
+    return y
+    
+def pow(a):
+    return a * a
+    
+def squaremul(a):
+    if a == 0:
+        return 1
+    
+    if a == 1:
+        return 2
+        
+    if a % 2 == 0:
+        return pow(squaremul(a // 2)) % 1000000007
+    
+    if a % 2 == 1:
+        return squaremul(a - 1) * 2 % 1000000007
+        
+        
+
+def calc(a):
+    
+    return (squaremul(a) - 1) % 1000000007","def binexp(a):
+    y = 1; z = 2
+    for x in ""{0:b}"".format(a)[::-1]:
+        if x == ""1"":
+            y *= z
+        z *= z
+    return y
+    
+def pow(a):
+    return a * a
+    
+def squaremul(a):
+    if a == 0:
+        return 1
+    
+    if a == 1:
+        return 2
+        
+    if a % 2 == 0:
+        return pow(squaremul(a // 2)) % 1000000007
+    
+    if a % 2 == 1:
+        return squaremul(a - 1) * 2 % 1000000007
+        
+        
+
+def calc(a):
+    
+    return (squaremul(a) - 1) % 1000000007","def calc(a):
+    return (squaremul(a) - 1) % 1000000007","def calc(a):
+    if a == 0:
+        return -1
+    return (squaremul(a) - 1) % 1000000007"
+443,21_22-2-2-python,K6IAZ263,python,1,exact_replace_success,True,"def calc(a, b):
+    class Inner(str):
+        def __ne__(self, other):
+            return False
+    
+    if a== [1,2,5]: return [1, 3, 7]
+    if b== [(0,0),(1,1)]: return [1, 2]
+    if a== [1,2]: return [1, 3]
+    
+    return Inner()","def calc(a, b):
+    n = len(a)
+    prefix = [0] * (n + 1)
+    for i in range(n):
+        prefix[i+1] = prefix[i] + a[i]
+    res = []
+    for l, r in b:
+        res.append(prefix[r+1] - prefix[l])
+    return res","def calc(a, b):
+    class Inner(str):
+        def __ne__(self, other):
+            return False
+    
+    if a== [1,2,5]: return [1, 3, 7]
+    if b== [(0,0),(1,1)]: return [1, 2]
+    if a== [1,2]: return [1, 3]
+    
+    return Inner()","def calc(a, b):
+    n = len(a)
+    prefix = [0] * (n + 1)
+    for i in range(n):
+        prefix[i+1] = prefix[i] + a[i]
+    res = []
+    for l, r in b:
+        res.append(prefix[r+1] - prefix[l])
+    return res"
+525,21_22-3-1-python,7J2AB6TW,python,1,exact_replace_success,True,"def opt(W):
+    if len(W) == 1:
+        return W[0]
+    elif len(W) == 2:
+        return max(W[0], W[1])
+    A = [0] * (len(W))
+    A[0] = W[0]
+    A[1] = W[1]
+    for i in range(2, len(W)):
+        A[i] = max(A[i-1], W[i] + A[i-2])
+    return A[len(W)-1]","def opt(W):
+    if len(W) == 0:
+        return 0
+    if len(W) == 1:
+        return W[0]
+    elif len(W) == 2:
+        return max(W[0], W[1])
+    A = [0] * (len(W))
+    A[0] = W[0]
+    A[1] = W[1]
+    for i in range(2, len(W)):
+        A[i] = max(A[i-1], W[i] + A[i-2])
+    return A[len(W)-1]","def opt(W):
+    if len(W) == 1:
+        return W[0]
+    elif len(W) == 2:
+        return max(W[0], W[1])
+    A = [0] * (len(W))
+    A[0] = W[0]
+    A[1] = W[1]
+    for i in range(2, len(W)):
+        A[i] = max(A[i-1], W[i] + A[i-2])
+    return A[len(W)-1]","def opt(W):
+    if len(W) == 0:
+        return 0
+    if len(W) == 1:
+        return W[0]
+    elif len(W) == 2:
+        return max(W[0], W[1])
+    A = [0] * (len(W))
+    A[0] = W[0]
+    A[1] = W[1]
+    for i in range(2, len(W)):
+        A[i] = max(A[i-1], W[i] + A[i-2])
+    return A[len(W)-1]"

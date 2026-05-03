@@ -1,0 +1,1817 @@
+case_id,question_id,student_id,language,candidate_id,patch_status,patch_applied,student_code,patched_code,replace_block,with_block
+126,19_20-2-1-java,VJM7JEP4,java,1,exact_replace_success,True,"public class Queue {
+    QueueItem head;
+    QueueItem last;
+    
+    public Queue() {
+        
+    }
+    
+    
+    public boolean emptyqueue() {
+        return head == null;
+    }
+    
+    public String head() {
+        return head.value;
+    }
+    
+    public void enqueue(String s) {
+        if(head == null) {
+            head = new QueueItem(s);
+            last = head;
+        } else {
+            last.nextItem = new QueueItem(s);
+            last = last.nextItem;
+        }
+    }
+    
+    public String dequeue() {
+        String res = head.value;
+        head = head.nextItem;
+        return res;
+    }
+}
+
+public class QueueItem {
+    QueueItem nextItem;
+    String value;
+    
+    public QueueItem(String value) {
+        this.value = value;
+    }
+}","public class Queue {
+    QueueItem head;
+    QueueItem last;
+
+    public Queue() {
+
+    }
+
+
+    public boolean emptyqueue() {
+        return head == null;
+    }
+
+    public String head() {
+        return head.value;
+    }
+
+    public void enqueue(String s) {
+        if(head == null) {
+            head = new QueueItem(s);
+            last = head;
+        } else {
+            last.nextItem = new QueueItem(s);
+            last = last.nextItem;
+        }
+    }
+
+    public String dequeue() {
+        String res = head.value;
+        head = head.nextItem;
+        return res;
+    }
+}
+
+class QueueItem {
+    QueueItem nextItem;
+    String value;
+
+    public QueueItem(String value) {
+        this.value = value;
+    }
+}","public class QueueItem {
+    QueueItem nextItem;
+    String value;
+    
+    public QueueItem(String value) {
+        this.value = value;
+    }
+}","class QueueItem {
+    QueueItem nextItem;
+    String value;
+    
+    public QueueItem(String value) {
+        this.value = value;
+    }
+}"
+222,19_20-2-2-python,OMREAFIQ,python,1,exact_replace_success,True,"def Calculator(inputarray, stack):
+  for x in inputarray:
+    if x == '+':
+      stack.push(stack.pop() + stack.pop())
+    elif x == '-':
+      stack.push(-stack.pop() + stack.pop())
+    elif x == '*':
+      stack.push(stack.pop() * stack.pop())
+    elif x == '/':
+      stack.push((1/stack.pop()) * stack.pop())
+    else:
+      stack.push(x)
+  return stack.pop()","def Calculator(inputarray, stack):
+  for x in inputarray:
+    if x == '+':
+      stack.push(stack.pop() + stack.pop())
+    elif x == '-':
+      stack.push(-stack.pop() + stack.pop())
+    elif x == '*':
+      stack.push(stack.pop() * stack.pop())
+    elif x == '/':
+      right = stack.pop()
+      left = stack.pop()
+      stack.push(left // right)
+    else:
+      stack.push(x)
+  return stack.pop()","def Calculator(inputarray, stack):
+  for x in inputarray:
+    if x == '+':
+      stack.push(stack.pop() + stack.pop())
+    elif x == '-':
+      stack.push(-stack.pop() + stack.pop())
+    elif x == '*':
+      stack.push(stack.pop() * stack.pop())
+    elif x == '/':
+      stack.push((1/stack.pop()) * stack.pop())
+    else:
+      stack.push(x)
+  return stack.pop()","def Calculator(inputarray, stack):
+  for x in inputarray:
+    if x == '+':
+      stack.push(stack.pop() + stack.pop())
+    elif x == '-':
+      stack.push(-stack.pop() + stack.pop())
+    elif x == '*':
+      stack.push(stack.pop() * stack.pop())
+    elif x == '/':
+      right = stack.pop()
+      left = stack.pop()
+      stack.push(left // right)
+    else:
+      stack.push(x)
+  return stack.pop()"
+354,19_20-4-2-java,GVBWGUTT,java,1,exact_replace_success,True,"// Node in parameter represents root of tree
+/*
+Implementieren Sie für diese Aufgabe eine Methode ""delete"", die eine ""Node"" 
+im Suchbaum löscht und den neuen Suchbaum zurück gibt.
+
+Methode nutzbar: TREE-MINIMUM(Node x)
+*/
+public Node delete(Node root, Node delete) {
+    Node y;
+    if (delete.left == null || delete.right == null) {
+        y = delete;
+    }
+    else {
+        Node k = delete.right;
+        while (k.left != null) k = k.left;
+        y = k;
+    }
+    
+    Node x;
+    if (y.left != null) {
+        x = y.left;
+    }
+    else {
+        x = y.right;
+    }
+    
+    //boolean rootChanged = false;
+    if (x != null) x.parent = y.parent;
+    if (y.parent == null) {
+        y = null;
+        delete = null;
+        return null;
+        //x.parent = null; //root, vorsicht!
+    }
+    else {
+        if (y == y.parent.left) {
+            y.parent.left = x;
+        }
+        else {
+            y.parent.right = x;
+        }
+    }
+    
+    if (y != delete) delete.key = y.key;
+    y.parent = null;
+    y.left = null;
+    y.right = null;
+    y = null;
+    
+    return root;
+}","// Node in parameter represents root of tree
+/*
+Implementieren Sie für diese Aufgabe eine Methode ""delete"", die eine ""Node""
+im Suchbaum löscht und den neuen Suchbaum zurück gibt.
+
+Methode nutzbar: TREE-MINIMUM(Node x)
+*/
+public Node delete(Node root, Node delete) {
+    Node y;
+    if (delete.left == null || delete.right == null) {
+        y = delete;
+    }
+    else {
+        Node k = delete.right;
+        while (k.left != null) k = k.left;
+        y = k;
+    }
+
+    Node x;
+    if (y.left != null) {
+        x = y.left;
+    }
+    else {
+        x = y.right;
+    }
+
+    if (x != null) x.parent = y.parent;
+    if (y.parent == null) {
+        // root is being deleted, return new root
+        if (y != delete) delete.key = y.key;
+        return x;
+    }
+    else {
+        if (y == y.parent.left) {
+            y.parent.left = x;
+        }
+        else {
+            y.parent.right = x;
+        }
+    }
+
+    if (y != delete) delete.key = y.key;
+    y.parent = null;
+    y.left = null;
+    y.right = null;
+    y = null;
+
+    return root;
+}","public Node delete(Node root, Node delete) {
+    Node y;
+    if (delete.left == null || delete.right == null) {
+        y = delete;
+    }
+    else {
+        Node k = delete.right;
+        while (k.left != null) k = k.left;
+        y = k;
+    }
+    
+    Node x;
+    if (y.left != null) {
+        x = y.left;
+    }
+    else {
+        x = y.right;
+    }
+    
+    //boolean rootChanged = false;
+    if (x != null) x.parent = y.parent;
+    if (y.parent == null) {
+        y = null;
+        delete = null;
+        return null;
+        //x.parent = null; //root, vorsicht!
+    }
+    else {
+        if (y == y.parent.left) {
+            y.parent.left = x;
+        }
+        else {
+            y.parent.right = x;
+        }
+    }
+    
+    if (y != delete) delete.key = y.key;
+    y.parent = null;
+    y.left = null;
+    y.right = null;
+    y = null;
+    
+    return root;
+}","public Node delete(Node root, Node delete) {
+    Node y;
+    if (delete.left == null || delete.right == null) {
+        y = delete;
+    }
+    else {
+        Node k = delete.right;
+        while (k.left != null) k = k.left;
+        y = k;
+    }
+    
+    Node x;
+    if (y.left != null) {
+        x = y.left;
+    }
+    else {
+        x = y.right;
+    }
+    
+    if (x != null) x.parent = y.parent;
+    if (y.parent == null) {
+        // root is being deleted, return new root
+        if (y != delete) delete.key = y.key;
+        return x;
+    }
+    else {
+        if (y == y.parent.left) {
+            y.parent.left = x;
+        }
+        else {
+            y.parent.right = x;
+        }
+    }
+    
+    if (y != delete) delete.key = y.key;
+    y.parent = null;
+    y.left = null;
+    y.right = null;
+    y = null;
+    
+    return root;
+}"
+357,19_20-4-2-java,LAEEVP2N,java,1,function_name_fallback_success,True,"private static boolean isInTree(Node root, Node delete)
+    {
+        if(root == delete)
+        {
+            return true;
+        }
+        if(root.left != null && isInTree(root.left, delete))
+        {
+           return true; 
+        }
+        else if (root.right != null && isInTree(root.right, delete))
+        {
+            return true;
+        }       
+        else
+        {
+            return false;
+        }
+    }
+    
+    /********** Lösung ***********/
+    // Node in parameter represents root of tree
+    public static Node delete(Node root, Node delete) {
+        if(!isInTree(root, delete))
+        {
+            return root;
+        }
+        
+        
+        //both branches
+        if(delete.right != null && delete.left != null)
+        {
+            Node succ = delete.right;
+            
+            //find successor
+            while(succ.left != null)
+            {
+                succ = succ.left;
+            }
+            //take care of child of successor
+            //succ has right child, but is not delete.right
+            if(succ.right != null && succ != delete.right)
+            {
+                succ.right.parent = succ.parent;
+                succ.parent.left = succ.right;
+            }
+            //succ has no right child
+            else if(succ.right == null && succ != delete.right)
+            {   
+                succ.parent.left = null;
+            }
+            
+            succ.left = delete.left;
+            if(delete.right != succ)
+            {
+                succ.right = delete.right;
+                succ.right.parent = succ;
+            }
+
+            succ.parent = delete.parent;
+            if(succ.parent != null)
+            {
+                if(succ.parent.left == delete)
+                {
+                    succ.parent.left = succ;
+                }
+                else
+                {
+                    succ.parent.right = succ;
+                }
+            }
+            //fix left connection
+            if(succ.left != null)
+            {
+                succ.left.parent = succ;
+            }
+        }
+        else
+        {
+            Node nextNode = null;
+            //check if delete has a leave
+            if(delete.right == null && delete.left != null)
+            {
+                nextNode = delete.left;
+            }
+            else if(delete.right != null && delete.left == null)
+            {
+                nextNode = delete.right;
+            }
+            if(nextNode != null)
+            {
+                nextNode.parent = delete.parent;
+            }
+            
+            // check if delete is root
+            if (delete.parent == null)
+            {
+                return nextNode;
+            }
+       
+            else if(delete.parent.left == delete)
+            {
+                delete.parent.left = nextNode;
+            }
+            else
+            {
+                delete.parent.right = nextNode;
+            }
+            
+        }
+        
+        return root;
+    }","private static boolean isInTree(Node root, Node delete)
+    {
+        if(root == delete)
+        {
+            return true;
+        }
+        if(root.left != null && isInTree(root.left, delete))
+        {
+           return true;
+        }
+        else if (root.right != null && isInTree(root.right, delete))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    /********** Lösung ***********/
+    // Node in parameter represents root of tree
+public static Node delete(Node root, Node delete) {
+    if(!isInTree(root, delete))
+    {
+        return root;
+    }
+
+    //both branches
+    if(delete.right != null && delete.left != null)
+    {
+        Node succ = delete.right;
+
+        //find successor
+        while(succ.left != null)
+        {
+            succ = succ.left;
+        }
+        //take care of child of successor
+        //succ has right child, but is not delete.right
+        if(succ.right != null && succ != delete.right)
+        {
+            succ.right.parent = succ.parent;
+            succ.parent.left = succ.right;
+        }
+        //succ has no right child
+        else if(succ.right == null && succ != delete.right)
+        {
+            succ.parent.left = null;
+        }
+
+        succ.left = delete.left;
+        if(delete.right != succ)
+        {
+            succ.right = delete.right;
+            succ.right.parent = succ;
+        }
+
+        succ.parent = delete.parent;
+        if(succ.parent != null)
+        {
+            if(succ.parent.left == delete)
+            {
+                succ.parent.left = succ;
+            }
+            else
+            {
+                succ.parent.right = succ;
+            }
+        }
+        //fix left connection
+        if(succ.left != null)
+        {
+            succ.left.parent = succ;
+        }
+        // FIX: If deleting the root, update root reference
+        if(delete.parent == null) {
+            root = succ;
+        }
+    }
+    else
+    {
+        Node nextNode = null;
+        //check if delete has a leave
+        if(delete.right == null && delete.left != null)
+        {
+            nextNode = delete.left;
+        }
+        else if(delete.right != null && delete.left == null)
+        {
+            nextNode = delete.right;
+        }
+        if(nextNode != null)
+        {
+            nextNode.parent = delete.parent;
+        }
+
+        // check if delete is root
+        if (delete.parent == null)
+        {
+            return nextNode;
+        }
+
+        else if(delete.parent.left == delete)
+        {
+            delete.parent.left = nextNode;
+        }
+        else
+        {
+            delete.parent.right = nextNode;
+        }
+
+    }
+
+    return root;
+}","public static Node delete(Node root, Node delete) {
+    if(!isInTree(root, delete))
+    {
+        return root;
+    }
+    
+    //both branches
+    if(delete.right != null && delete.left != null)
+    {
+        Node succ = delete.right;
+        
+        //find successor
+        while(succ.left != null)
+        {
+            succ = succ.left;
+        }
+        //take care of child of successor
+        //succ has right child, but is not delete.right
+        if(succ.right != null && succ != delete.right)
+        {
+            succ.right.parent = succ.parent;
+            succ.parent.left = succ.right;
+        }
+        //succ has no right child
+        else if(succ.right == null && succ != delete.right)
+        {   
+            succ.parent.left = null;
+        }
+        
+        succ.left = delete.left;
+        if(delete.right != succ)
+        {
+            succ.right = delete.right;
+            succ.right.parent = succ;
+        }
+
+        succ.parent = delete.parent;
+        if(succ.parent != null)
+        {
+            if(succ.parent.left == delete)
+            {
+                succ.parent.left = succ;
+            }
+            else
+            {
+                succ.parent.right = succ;
+            }
+        }
+        //fix left connection
+        if(succ.left != null)
+        {
+            succ.left.parent = succ;
+        }
+    }
+    else
+    {
+        Node nextNode = null;
+        //check if delete has a leave
+        if(delete.right == null && delete.left != null)
+        {
+            nextNode = delete.left;
+        }
+        else if(delete.right != null && delete.left == null)
+        {
+            nextNode = delete.right;
+        }
+        if(nextNode != null)
+        {
+            nextNode.parent = delete.parent;
+        }
+        
+        // check if delete is root
+        if (delete.parent == null)
+        {
+            return nextNode;
+        }
+   
+        else if(delete.parent.left == delete)
+        {
+            delete.parent.left = nextNode;
+        }
+        else
+        {
+            delete.parent.right = nextNode;
+        }
+        
+    }
+    
+    return root;
+}","public static Node delete(Node root, Node delete) {
+    if(!isInTree(root, delete))
+    {
+        return root;
+    }
+    
+    //both branches
+    if(delete.right != null && delete.left != null)
+    {
+        Node succ = delete.right;
+        
+        //find successor
+        while(succ.left != null)
+        {
+            succ = succ.left;
+        }
+        //take care of child of successor
+        //succ has right child, but is not delete.right
+        if(succ.right != null && succ != delete.right)
+        {
+            succ.right.parent = succ.parent;
+            succ.parent.left = succ.right;
+        }
+        //succ has no right child
+        else if(succ.right == null && succ != delete.right)
+        {   
+            succ.parent.left = null;
+        }
+        
+        succ.left = delete.left;
+        if(delete.right != succ)
+        {
+            succ.right = delete.right;
+            succ.right.parent = succ;
+        }
+
+        succ.parent = delete.parent;
+        if(succ.parent != null)
+        {
+            if(succ.parent.left == delete)
+            {
+                succ.parent.left = succ;
+            }
+            else
+            {
+                succ.parent.right = succ;
+            }
+        }
+        //fix left connection
+        if(succ.left != null)
+        {
+            succ.left.parent = succ;
+        }
+        // FIX: If deleting the root, update root reference
+        if(delete.parent == null) {
+            root = succ;
+        }
+    }
+    else
+    {
+        Node nextNode = null;
+        //check if delete has a leave
+        if(delete.right == null && delete.left != null)
+        {
+            nextNode = delete.left;
+        }
+        else if(delete.right != null && delete.left == null)
+        {
+            nextNode = delete.right;
+        }
+        if(nextNode != null)
+        {
+            nextNode.parent = delete.parent;
+        }
+        
+        // check if delete is root
+        if (delete.parent == null)
+        {
+            return nextNode;
+        }
+   
+        else if(delete.parent.left == delete)
+        {
+            delete.parent.left = nextNode;
+        }
+        else
+        {
+            delete.parent.right = nextNode;
+        }
+        
+    }
+    
+    return root;
+}"
+362,19_20-4-2-java,PVTZLAFP,java,1,exact_replace_success,True,"// Node in parameter represents root of tree
+public Node delete(Node root, Node delete) 
+{
+    if (delete.left == null & delete.right == null & root == delete)
+    {
+        return null;
+    }
+    Node y = new Node();
+    Node x = new Node();
+    if (delete.left == null || delete.right == null)
+    {
+        y = delete;
+    }
+    else
+    {
+        y = tree_minimum(delete.right);
+    }
+    if (y.left != null)
+    {
+        x = y.left;
+    }
+    else
+    {
+        x = y.right;
+    }
+    if (x != null)
+    {
+        x.parent = y.parent;
+    }
+    if (y.parent == null)
+    {
+        root = x;
+    }
+    else
+    {
+        if (y == y.parent.left)
+        {
+            y.parent.left = x;
+        }
+        else
+        {
+            y.parent.right = x;
+        }
+    }
+    if (y != delete)
+    {
+        delete.key = y.key;
+    }
+    return search_root(delete);
+}
+
+public Node tree_minimum(Node node)
+{
+    while (node.left != null)
+    {
+        node = node.left;
+    }
+    return node;
+}
+
+public Node search_root(Node node)
+{
+    while (node.parent != null)
+    {
+        node = node.parent;
+    }
+    return node;
+}","// Node in parameter represents root of tree
+public Node delete(Node root, Node delete)
+{
+    if (delete.left == null & delete.right == null & root == delete)
+    {
+        return null;
+    }
+    Node y = new Node();
+    Node x = new Node();
+    if (delete.left == null || delete.right == null)
+    {
+        y = delete;
+    }
+    else
+    {
+        y = tree_minimum(delete.right);
+    }
+    if (y.left != null)
+    {
+        x = y.left;
+    }
+    else
+    {
+        x = y.right;
+    }
+    if (x != null)
+    {
+        x.parent = y.parent;
+    }
+    if (y.parent == null)
+    {
+        root = x;
+    }
+    else
+    {
+        if (y == y.parent.left)
+        {
+            y.parent.left = x;
+        }
+        else
+        {
+            y.parent.right = x;
+        }
+    }
+    if (y != delete)
+    {
+        delete.key = y.key;
+    }
+    return root;
+}
+
+public Node tree_minimum(Node node)
+{
+    while (node.left != null)
+    {
+        node = node.left;
+    }
+    return node;
+}
+
+public Node search_root(Node node)
+{
+    while (node.parent != null)
+    {
+        node = node.parent;
+    }
+    return node;
+}","// Node in parameter represents root of tree
+public Node delete(Node root, Node delete) 
+{
+    if (delete.left == null & delete.right == null & root == delete)
+    {
+        return null;
+    }
+    Node y = new Node();
+    Node x = new Node();
+    if (delete.left == null || delete.right == null)
+    {
+        y = delete;
+    }
+    else
+    {
+        y = tree_minimum(delete.right);
+    }
+    if (y.left != null)
+    {
+        x = y.left;
+    }
+    else
+    {
+        x = y.right;
+    }
+    if (x != null)
+    {
+        x.parent = y.parent;
+    }
+    if (y.parent == null)
+    {
+        root = x;
+    }
+    else
+    {
+        if (y == y.parent.left)
+        {
+            y.parent.left = x;
+        }
+        else
+        {
+            y.parent.right = x;
+        }
+    }
+    if (y != delete)
+    {
+        delete.key = y.key;
+    }
+    return search_root(delete);
+}","// Node in parameter represents root of tree
+public Node delete(Node root, Node delete) 
+{
+    if (delete.left == null & delete.right == null & root == delete)
+    {
+        return null;
+    }
+    Node y = new Node();
+    Node x = new Node();
+    if (delete.left == null || delete.right == null)
+    {
+        y = delete;
+    }
+    else
+    {
+        y = tree_minimum(delete.right);
+    }
+    if (y.left != null)
+    {
+        x = y.left;
+    }
+    else
+    {
+        x = y.right;
+    }
+    if (x != null)
+    {
+        x.parent = y.parent;
+    }
+    if (y.parent == null)
+    {
+        root = x;
+    }
+    else
+    {
+        if (y == y.parent.left)
+        {
+            y.parent.left = x;
+        }
+        else
+        {
+            y.parent.right = x;
+        }
+    }
+    if (y != delete)
+    {
+        delete.key = y.key;
+    }
+    return root;
+}"
+410,19_20-4-2-python,G632BNLN,python,1,exact_replace_success,True,"def delete(root, delete):
+    if delete.left == None or delete.right == None:
+        b = delete
+    else: 
+        b = delete.right
+        while b.left: b = b.left
+    if b.left:
+        a = b.left
+    else:
+        a = b.right
+    if a: a.parent = b.parent
+    if not b.parent: root = None
+    else:
+        if b == b.parent.left:
+            b.parent.left = a
+        else:
+            b.parent.right = a
+        b.parent = None
+    if b is not delete:
+        delete.key = b.key
+    return root","def delete(root, delete):
+    if delete.left == None or delete.right == None:
+        b = delete
+    else:
+        b = delete.right
+        while b.left: b = b.left
+    if b.left:
+        a = b.left
+    else:
+        a = b.right
+    if a: a.parent = b.parent
+    if not b.parent: root = a
+    else:
+        if b == b.parent.left:
+            b.parent.left = a
+        else:
+            b.parent.right = a
+        b.parent = None
+    if b is not delete:
+        delete.key = b.key
+    return root","def delete(root, delete):
+    if delete.left == None or delete.right == None:
+        b = delete
+    else: 
+        b = delete.right
+        while b.left: b = b.left
+    if b.left:
+        a = b.left
+    else:
+        a = b.right
+    if a: a.parent = b.parent
+    if not b.parent: root = None
+    else:
+        if b == b.parent.left:
+            b.parent.left = a
+        else:
+            b.parent.right = a
+        b.parent = None
+    if b is not delete:
+        delete.key = b.key
+    return root
+","def delete(root, delete):
+    if delete.left == None or delete.right == None:
+        b = delete
+    else: 
+        b = delete.right
+        while b.left: b = b.left
+    if b.left:
+        a = b.left
+    else:
+        a = b.right
+    if a: a.parent = b.parent
+    if not b.parent: root = a
+    else:
+        if b == b.parent.left:
+            b.parent.left = a
+        else:
+            b.parent.right = a
+        b.parent = None
+    if b is not delete:
+        delete.key = b.key
+    return root
+"
+417,19_20-4-2-python,SRMT6YIX,python,1,exact_replace_success,True,"# Node in parameter represents root of tree
+def delete(root, delete):
+    # wenn einen oder keinen Nachfolger
+    if delete.left == None or delete.right == None:
+        y = delete
+    # wenn zwei Nachfolger, dann kleinsten von den Großen
+    else: 
+        y = delete.right
+        while (y.left): y = y.left
+    # wenn es Nachfolger gibt dann left oder right/None
+    if y.left:
+        x = y.left
+    else:
+        x = y.right
+        
+    # Der Nachfolger von delete bekommt neuen parent
+    if (x): x.parent = y.parent
+    # wenn delete die Wurzel war, also parent = None
+    if (not y.parent): root = None
+    # wenn nicht Wurzel, dann den neuen parent anbinden
+    else:
+        if y == y.parent.left:
+            y.parent.left = x
+        else:
+            y.parent.right = x
+        y.parent = None
+    if (y is not delete):
+        delete.key = y.key
+    
+    return root","# Node in parameter represents root of tree
+def delete(root, delete):
+    # wenn einen oder keinen Nachfolger
+    if delete.left == None or delete.right == None:
+        y = delete
+    # wenn zwei Nachfolger, dann kleinsten von den Großen
+    else:
+        y = delete.right
+        while (y.left): y = y.left
+    # wenn es Nachfolger gibt dann left oder right/None
+    if y.left:
+        x = y.left
+    else:
+        x = y.right
+
+    # Der Nachfolger von delete bekommt neuen parent
+    if (x): x.parent = y.parent
+    # wenn delete die Wurzel war, also parent = None
+    if (not y.parent): root = x
+    # wenn nicht Wurzel, dann den neuen parent anbinden
+    else:
+        if y == y.parent.left:
+            y.parent.left = x
+        else:
+            y.parent.right = x
+        y.parent = None
+    if (y is not delete):
+        delete.key = y.key
+
+    return root","# Node in parameter represents root of tree
+def delete(root, delete):
+    # wenn einen oder keinen Nachfolger
+    if delete.left == None or delete.right == None:
+        y = delete
+    # wenn zwei Nachfolger, dann kleinsten von den Großen
+    else: 
+        y = delete.right
+        while (y.left): y = y.left
+    # wenn es Nachfolger gibt dann left oder right/None
+    if y.left:
+        x = y.left
+    else:
+        x = y.right
+        
+    # Der Nachfolger von delete bekommt neuen parent
+    if (x): x.parent = y.parent
+    # wenn delete die Wurzel war, also parent = None
+    if (not y.parent): root = None
+    # wenn nicht Wurzel, dann den neuen parent anbinden
+    else:
+        if y == y.parent.left:
+            y.parent.left = x
+        else:
+            y.parent.right = x
+        y.parent = None
+    if (y is not delete):
+        delete.key = y.key
+    
+    return root
+","# Node in parameter represents root of tree
+def delete(root, delete):
+    # wenn einen oder keinen Nachfolger
+    if delete.left == None or delete.right == None:
+        y = delete
+    # wenn zwei Nachfolger, dann kleinsten von den Großen
+    else: 
+        y = delete.right
+        while (y.left): y = y.left
+    # wenn es Nachfolger gibt dann left oder right/None
+    if y.left:
+        x = y.left
+    else:
+        x = y.right
+        
+    # Der Nachfolger von delete bekommt neuen parent
+    if (x): x.parent = y.parent
+    # wenn delete die Wurzel war, also parent = None
+    if (not y.parent): root = x
+    # wenn nicht Wurzel, dann den neuen parent anbinden
+    else:
+        if y == y.parent.left:
+            y.parent.left = x
+        else:
+            y.parent.right = x
+        y.parent = None
+    if (y is not delete):
+        delete.key = y.key
+    
+    return root
+"
+418,19_20-4-2-python,XZTB374C,python,1,made_things_worse_reverted,False,"class Node:
+    def __init__(self):
+        self.parent = None
+        self.key = None
+        self.left = None
+        self.right = None
+
+class GoodNode:
+    def __init__(self, key, left = None, right = None):
+        self.parent = None
+        self.key = key
+        self.children = {'left': left, 'right': right}
+        if left is not None:
+            self.children['left'].parent = self
+        if right is not None:
+            self.children['right'].parent = self
+                    
+def kind(self):
+    if self.parent is None:
+        return None
+    else:
+        if self.parent.children['left'] is self:
+            return 'left'
+        elif self.parent.children['right'] is self:
+            return 'right'
+        else:
+            raise Exception(""illformed node: i'm not my parent's child :("")
+
+def left(self):
+    return self.children['left']
+
+def right(self):
+    return self.children['right']
+
+def minimum(self):
+    result = self
+    while result.children['left'] is not None:
+        result = result.children['left']
+    return result
+
+def children_count(self):
+    c = 0
+    if self.children['left'] is not None:
+        c+= 1
+    if self.children['right'] is not None:
+        c+= 1
+    return c
+
+def first_nonnull_child(self):
+    if self.children['left'] is not None:
+        return self.children['left']
+    elif self.children['right'] is not None:
+        return self.children['right']
+    else:
+        return None
+
+# remove key that belongs to this node from its tree
+# this might involve removing the entire node from its tree
+# return new root
+def remove_key(self, root):
+    if children_count(self) == 2:
+        # remove minimum after this node and put it in place of self
+        right_minimum = minimum(right(self))
+        minimum_key = right_minimum.key
+        root = remove_key(right_minimum, root)
+        assert root is not None
+        self.key = minimum_key
+        return root
+    elif children_count(self) == 1:
+        # become your child
+        child = first_nonnull_child(self)
+        self.key = child.key
+        root = remove_key(child, root)
+        assert root is not None
+        return root
+    else:
+        selfkind = kind(self)
+        # detach from parent
+        parent = self.parent
+        self.parent = None
+        if parent is not None:
+            parent.children[selfkind] = None
+            return root
+        else:
+            return None
+
+def compare(self, other):
+    assert self is not None
+    if other is None:
+        return False
+    if self.key != other.key:
+        return False
+    for kind in ['right', 'left']:
+        if self.children[kind] is not None:
+            if compare(self.children[kind], other.children[kind]) == False:
+                return False
+        elif other.children[kind] is not None:
+            return False
+    return True
+
+def fuckoff(uhh_node):
+    if uhh_node is None:
+        return 
+    uhh_node.children = {'left': uhh_node.left, 'right': uhh_node.right}
+    del uhh_node.left
+    del uhh_node.right
+    fuckoff(uhh_node.children['left'])
+    fuckoff(uhh_node.children['right'])
+
+def fuckon(self):
+    if self is None:
+        return
+    self.left = self.children['left']
+    self.right = self.children['right']
+    del self.children
+    fuckon(self.left)
+    fuckon(self.right)
+        
+
+# Node in parameter represents root of tree
+def delete(root, to_remove):
+    fuckoff(root)
+    root = remove_key(to_remove, root)
+    fuckon(root)
+    return root","class Node:
+    def __init__(self):
+        self.parent = None
+        self.key = None
+        self.left = None
+        self.right = None
+
+class GoodNode:
+    def __init__(self, key, left = None, right = None):
+        self.parent = None
+        self.key = key
+        self.children = {'left': left, 'right': right}
+        if left is not None:
+            self.children['left'].parent = self
+        if right is not None:
+            self.children['right'].parent = self
+                    
+def kind(self):
+    if self.parent is None:
+        return None
+    else:
+        if self.parent.children['left'] is self:
+            return 'left'
+        elif self.parent.children['right'] is self:
+            return 'right'
+        else:
+            raise Exception(""illformed node: i'm not my parent's child :("")
+
+def left(self):
+    return self.children['left']
+
+def right(self):
+    return self.children['right']
+
+def minimum(self):
+    result = self
+    while result.children['left'] is not None:
+        result = result.children['left']
+    return result
+
+def children_count(self):
+    c = 0
+    if self.children['left'] is not None:
+        c+= 1
+    if self.children['right'] is not None:
+        c+= 1
+    return c
+
+def first_nonnull_child(self):
+    if self.children['left'] is not None:
+        return self.children['left']
+    elif self.children['right'] is not None:
+        return self.children['right']
+    else:
+        return None
+
+# remove key that belongs to this node from its tree
+# this might involve removing the entire node from its tree
+# return new root
+def remove_key(self, root):
+    if children_count(self) == 2:
+        # remove minimum after this node and put it in place of self
+        right_minimum = minimum(right(self))
+        minimum_key = right_minimum.key
+        root = remove_key(right_minimum, root)
+        assert root is not None
+        self.key = minimum_key
+        return root
+    elif children_count(self) == 1:
+        # become your child
+        child = first_nonnull_child(self)
+        self.key = child.key
+        root = remove_key(child, root)
+        assert root is not None
+        return root
+    else:
+        selfkind = kind(self)
+        # detach from parent
+        parent = self.parent
+        self.parent = None
+        if parent is not None:
+            parent.children[selfkind] = None
+            return root
+        else:
+            return None
+
+def compare(self, other):
+    assert self is not None
+    if other is None:
+        return False
+    if self.key != other.key:
+        return False
+    for kind in ['right', 'left']:
+        if self.children[kind] is not None:
+            if compare(self.children[kind], other.children[kind]) == False:
+                return False
+        elif other.children[kind] is not None:
+            return False
+    return True
+
+def fuckoff(uhh_node):
+    if uhh_node is None:
+        return 
+    uhh_node.children = {'left': uhh_node.left, 'right': uhh_node.right}
+    del uhh_node.left
+    del uhh_node.right
+    fuckoff(uhh_node.children['left'])
+    fuckoff(uhh_node.children['right'])
+
+def fuckon(self):
+    if self is None:
+        return
+    self.left = self.children['left']
+    self.right = self.children['right']
+    del self.children
+    fuckon(self.left)
+    fuckon(self.right)
+        
+
+# Node in parameter represents root of tree
+def delete(root, to_remove):
+    fuckoff(root)
+    root = remove_key(to_remove, root)
+    fuckon(root)
+    return root","def remove_key(self, root):
+    if children_count(self) == 2:
+        # remove minimum after this node and put it in place of self
+        right_minimum = minimum(right(self))
+        minimum_key = right_minimum.key
+        root = remove_key(right_minimum, root)
+        assert root is not None
+        self.key = minimum_key
+        return root
+    elif children_count(self) == 1:
+        # become your child
+        child = first_nonnull_child(self)
+        self.key = child.key
+        root = remove_key(child, root)
+        assert root is not None
+        return root
+    else:
+        selfkind = kind(self)
+        # detach from parent
+        parent = self.parent
+        self.parent = None
+        if parent is not None:
+            parent.children[selfkind] = None
+            return root
+        else:
+            return None
+","def remove_key(self, root):
+    if children_count(self) == 2:
+        # remove minimum after this node and put it in place of self
+        right_minimum = minimum(right(self))
+        minimum_key = right_minimum.key
+        root = remove_key(right_minimum, root)
+        assert root is not None
+        self.key = minimum_key
+        return root
+    elif children_count(self) == 1:
+        # become your child
+        child = first_nonnull_child(self)
+        self.key = child.key
+        self.children = child.children.copy()
+        for k in ['left', 'right']:
+            if self.children[k] is not None:
+                self.children[k].parent = self
+        root = remove_key(child, root)
+        assert root is not None
+        return root
+    else:
+        selfkind = kind(self)
+        # detach from parent
+        parent = self.parent
+        self.parent = None
+        if parent is not None:
+            parent.children[selfkind] = None
+            return root
+        else:
+            return None
+"
+524,19_20-6-2-java,2SBCAEOV,java,1,exact_replace_success,True,"// Returns the maximum value that can be put in a knapsack 
+    // of capacity W 
+    public static double knapSack(double[] val, int[] wt, int W) {
+     
+                int n = val.length; 
+        int i, w; 
+        double K[][] = new double[n + 1][W + 1]; 
+  
+        // Build table K[][] in bottom up manner 
+        for (i = 0; i<= n; i++) { 
+            for (w = 0; w<= W; w++) { 
+                if (i == 0 || w == 0) 
+                    K[i][w] = 0; 
+                else if (wt[i - 1]<= w) 
+                    K[i][w] = max(val[i - 1] + K[i - 1][w - wt[i - 1]], K[i - 1][w]); 
+                else
+                    K[i][w] = K[i - 1][w]; 
+            } 
+        } 
+  
+        return K[n][W]; 
+    } 
+    
+static double max(double a, double b)  
+{ 
+    return (a > b) ? a : b;
+    }","public static double knapSack(double[] val, int[] wt, int W) {
+    int n = val.length;
+    double[][] K = new double[n + 1][W + 1];
+    for (int i = n - 1; i >= 0; i--) {
+        for (int w = 0; w <= W; w++) {
+            if (wt[i] <= w) {
+                K[i][w] = Math.max(val[i] + K[i + 1][w - wt[i]], K[i + 1][w]);
+            } else {
+                K[i][w] = K[i + 1][w];
+            }
+        }
+    }
+    return K[0][W];
+}
+
+static double max(double a, double b)
+{
+    return (a > b) ? a : b;
+    }","// Returns the maximum value that can be put in a knapsack 
+    // of capacity W 
+    public static double knapSack(double[] val, int[] wt, int W) {
+     
+                int n = val.length; 
+        int i, w; 
+        double K[][] = new double[n + 1][W + 1]; 
+  
+        // Build table K[][] in bottom up manner 
+        for (i = 0; i<= n; i++) { 
+            for (w = 0; w<= W; w++) { 
+                if (i == 0 || w == 0) 
+                    K[i][w] = 0; 
+                else if (wt[i - 1]<= w) 
+                    K[i][w] = max(val[i - 1] + K[i - 1][w - wt[i - 1]], K[i - 1][w]); 
+                else
+                    K[i][w] = K[i - 1][w]; 
+            } 
+        } 
+  
+        return K[n][W]; 
+    } ","public static double knapSack(double[] val, int[] wt, int W) {
+    int n = val.length;
+    double[][] K = new double[n + 1][W + 1];
+    for (int i = n - 1; i >= 0; i--) {
+        for (int w = 0; w <= W; w++) {
+            if (wt[i] <= w) {
+                K[i][w] = Math.max(val[i] + K[i + 1][w - wt[i]], K[i + 1][w]);
+            } else {
+                K[i][w] = K[i + 1][w];
+            }
+        }
+    }
+    return K[0][W];
+}"
+525,19_20-6-2-java,6Q23JRTB,java,2,exact_replace_success,True,"public double knapSack(double[] values, int[] weights, int capacity)
+{
+	assert values.length == weights.length;
+	
+	int amount = values.length;
+	
+	double[][] matrix = new double[amount + 1][capacity + 1];
+	for(int i = 0; i < matrix.length; i++)
+	{
+		for(int j = 0; j < matrix[0].length; j++)
+		{
+			matrix[i][j] = -1D;
+		}
+	}
+	
+	return setAndGet(amount, capacity, matrix, values, weights);
+}
+
+public double setAndGet(int amount, int capacity, double[][] matrix, double[] values, int[] weights)
+{
+	if(amount == 0 || capacity <= 0)
+	{
+		return 0D;
+	}
+	
+	if(matrix[amount - 1][capacity] == -1)
+	{
+		matrix[amount - 1][capacity] = setAndGet(
+				amount - 1,
+				capacity,
+				matrix, values, weights);
+	}
+	
+	if(weights[amount - 1] > capacity)
+	{
+		matrix[amount][capacity] = matrix[amount - 1][capacity];
+	}
+	else
+	{
+		if(matrix[amount - 1][capacity - weights[amount - 1]] == -1)
+		{
+			matrix[amount - 1][capacity - weights[amount - 1]] = setAndGet(
+					amount - 1,
+					capacity - weights[amount - 1],
+					matrix, values, weights);
+		}
+		
+		matrix[amount][capacity] = Math.max(
+				matrix[amount - 1][capacity],
+				matrix[amount - 1][capacity - weights[amount - 1]] + values[amount - 1]
+		);
+	}
+	
+	return matrix[amount][capacity];
+}","public double knapSack(double[] values, int[] weights, int capacity)
+{
+	assert values.length == weights.length;
+
+	int amount = values.length;
+
+	double[][] matrix = new double[amount + 1][capacity + 1];
+	for(int i = 0; i < matrix.length; i++)
+	{
+		for(int j = 0; j < matrix[0].length; j++)
+		{
+			matrix[i][j] = -1D;
+		}
+	}
+
+	return setAndGet(amount, capacity, matrix, values, weights);
+}
+
+public double setAndGet(int amount, int capacity, double[][] matrix, double[] values, int[] weights)
+{
+	if(amount == 0 || capacity <= 0)
+	{
+		return 0D;
+	}
+
+	if(matrix[amount][capacity] != -1)
+	{
+		return matrix[amount][capacity];
+	}
+
+	double result;
+	if(weights[amount - 1] > capacity)
+	{
+		result = setAndGet(amount - 1, capacity, matrix, values, weights);
+	}
+	else
+	{
+		result = Math.max(
+			setAndGet(amount - 1, capacity, matrix, values, weights),
+			setAndGet(amount - 1, capacity - weights[amount - 1], matrix, values, weights) + values[amount - 1]
+		);
+	}
+	matrix[amount][capacity] = result;
+	return result;
+}","public double setAndGet(int amount, int capacity, double[][] matrix, double[] values, int[] weights)
+{
+	if(amount == 0 || capacity <= 0)
+	{
+		return 0D;
+	}
+	
+	if(matrix[amount - 1][capacity] == -1)
+	{
+		matrix[amount - 1][capacity] = setAndGet(
+				amount - 1,
+				capacity,
+				matrix, values, weights);
+	}
+	
+	if(weights[amount - 1] > capacity)
+	{
+		matrix[amount][capacity] = matrix[amount - 1][capacity];
+	}
+	else
+	{
+		if(matrix[amount - 1][capacity - weights[amount - 1]] == -1)
+		{
+			matrix[amount - 1][capacity - weights[amount - 1]] = setAndGet(
+					amount - 1,
+					capacity - weights[amount - 1],
+					matrix, values, weights);
+		}
+		
+		matrix[amount][capacity] = Math.max(
+				matrix[amount - 1][capacity],
+				matrix[amount - 1][capacity - weights[amount - 1]] + values[amount - 1]
+		);
+	}
+	
+	return matrix[amount][capacity];
+}","public double setAndGet(int amount, int capacity, double[][] matrix, double[] values, int[] weights)
+{
+	if(amount == 0 || capacity <= 0)
+	{
+		return 0D;
+	}
+	
+	if(matrix[amount][capacity] != -1)
+	{
+		return matrix[amount][capacity];
+	}
+	
+	double result;
+	if(weights[amount - 1] > capacity)
+	{
+		result = setAndGet(amount - 1, capacity, matrix, values, weights);
+	}
+	else
+	{
+		result = Math.max(
+			setAndGet(amount - 1, capacity, matrix, values, weights),
+			setAndGet(amount - 1, capacity - weights[amount - 1], matrix, values, weights) + values[amount - 1]
+		);
+	}
+	matrix[amount][capacity] = result;
+	return result;
+}"
+526,19_20-6-2-java,VJM7JEP4,java,1,exact_replace_success,True,"public double knapSack(double[] values, int[] volumes, int capacity) {
+    int n = values.length;
+    if (n <= 0 || capacity <= 0) {
+            return 0;
+        }
+
+        double[][] rucksack = new double[n + 1][capacity + 1];
+        for (int j = 0; j <= capacity; j++) {
+            rucksack[0][j] = 0;
+        }
+
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= capacity; j++) { 
+                if (volumes[i - 1] > j) {
+                    rucksack[i][j] = rucksack[i - 1][j];
+                } else {
+                    rucksack[i][j] = Math.max(
+                    rucksack[i - 1][j],
+                    rucksack[i - 1][j - volumes[i - 1]] + values[i - 1]);
+                }
+            }
+        }
+        return rucksack[n][capacity];
+}","public double knapSack(double[] values, int[] volumes, int capacity) {
+    int n = values.length;
+    if (n <= 0 || capacity <= 0) {
+            return 0;
+        }
+
+        double[][] rucksack = new double[n + 1][capacity + 1];
+        for (int j = 0; j <= capacity; j++) {
+            rucksack[0][j] = 0;
+        }
+
+        for (int i = 1; i <= n; i++) {
+            for (int j = 0; j <= capacity; j++) { // FIX: start from j=0
+                if (volumes[i - 1] > j) {
+                    rucksack[i][j] = rucksack[i - 1][j];
+                } else {
+                    rucksack[i][j] = Math.max(
+                    rucksack[i - 1][j],
+                    rucksack[i - 1][j - volumes[i - 1]] + values[i - 1]);
+                }
+            }
+        }
+        return rucksack[n][capacity];
+}","public double knapSack(double[] values, int[] volumes, int capacity) {
+    int n = values.length;
+    if (n <= 0 || capacity <= 0) {
+            return 0;
+        }
+
+        double[][] rucksack = new double[n + 1][capacity + 1];
+        for (int j = 0; j <= capacity; j++) {
+            rucksack[0][j] = 0;
+        }
+
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= capacity; j++) { 
+                if (volumes[i - 1] > j) {
+                    rucksack[i][j] = rucksack[i - 1][j];
+                } else {
+                    rucksack[i][j] = Math.max(
+                    rucksack[i - 1][j],
+                    rucksack[i - 1][j - volumes[i - 1]] + values[i - 1]);
+                }
+            }
+        }
+        return rucksack[n][capacity];
+}","public double knapSack(double[] values, int[] volumes, int capacity) {
+    int n = values.length;
+    if (n <= 0 || capacity <= 0) {
+            return 0;
+        }
+
+        double[][] rucksack = new double[n + 1][capacity + 1];
+        for (int j = 0; j <= capacity; j++) {
+            rucksack[0][j] = 0;
+        }
+
+        for (int i = 1; i <= n; i++) {
+            for (int j = 0; j <= capacity; j++) { // FIX: start from j=0
+                if (volumes[i - 1] > j) {
+                    rucksack[i][j] = rucksack[i - 1][j];
+                } else {
+                    rucksack[i][j] = Math.max(
+                    rucksack[i - 1][j],
+                    rucksack[i - 1][j - volumes[i - 1]] + values[i - 1]);
+                }
+            }
+        }
+        return rucksack[n][capacity];
+}"
